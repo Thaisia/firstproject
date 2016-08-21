@@ -1,0 +1,131 @@
+<div class="sidebar sidebar-pic">
+  <div class="mini-menu">
+    <ul>
+      <li class="sub">
+          <a href="/faces">Faces</a>
+          <ul>
+             <li><a href="/faces" >Kids</a></li>
+             <li><a href="#">Gentlemen</a></li>
+             <li class="sub"><a href="#">Ladies</a>
+                 <ul>
+                    <li><a href="#">Casual</a></li>
+                    <li><a href="#">Sensual</a></li>
+                    <li><a href="#">Fancy</a></li>
+                 </ul>
+             </li>
+
+             <li><a href="#">Group portraits</a></li>
+          </ul>
+      </li>
+      <li class="sub">
+          <a href="/places">Places</a>
+          <ul>
+             <li><a href="#">Nature</a></li>
+             <li><a href="#">Countries</a></li>
+             <li><a href="#">Sky</a></li>
+          </ul>
+      </li>
+      <li class="sub">
+          <a href="/events">Events</a>
+          <ul>
+              <li><a href="#">Festivals and conferences</a></li>
+              <li><a href="#">Social dances</a></li>
+              <li><a href="#">Sport</a></li>
+              <li><a href="#">Concerts</a></li>
+
+          </ul>
+      </li>
+      <li class="sub">
+          <a href="/events">Close up</a>
+          <ul>
+              <li><a href="#">Flora</a></li>
+              <li><a href="#">Fauna</a></li>
+              <li><a href="#">And other things</a></li>
+          </ul>
+      </li>
+      <li class="sub">
+          <a href="/events">Coaching</a>
+      </li>
+      <li class="sub">
+          <a href="/aboutme" >About me</a>
+      </li>
+    </ul>
+  </div>
+  <ul class="sidebar-tags">
+      <li><a href="/">place for tags</a></li>
+  </ul>
+</div>
+
+<div class="gallery-container content">
+<div id="ajaxresult"></div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $('.sub > a').click(function(){
+    clicked = $(this);
+    $('.sub ul').each(function() {
+      if (!($(this).is(clicked.closest("ul")))) {
+        $(this).slideUp();
+      }
+    });
+
+    if ($(this).next().is(":visible")){
+      $(this).next().slideUp();
+    } else {
+      $(this).next().slideToggle();
+    }
+    return false;
+  });
+
+  $('.mini-menu > ul > li > a').click(function(){
+    $('.mini-menu > ul > li > a, .sub a').removeClass('active');
+    $(this).addClass('active');
+  });
+
+  $('.sub ul li a').click(function(){
+    $('.sub ul li a').removeClass('active');
+    $(this).addClass('active');
+  });
+});
+</script>
+
+
+<script>
+    $(function () {
+        $(".tiles").tilesGallery({
+            height: 800,
+            margin: 4,
+            enableTwitter: true,
+            enableFacebook: true,
+            enableGplus: true,
+            enablePinterest: true
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#lightgallery").lightGallery();
+    });
+</script>
+
+<script>
+  function sendAjaxRequest() {
+    $.ajax({
+      url: "/faces",
+      success: function(res) {
+        $("#ajaxresult").html(res);
+      //  window.history.pushState(res, "faces", "/faces");
+      }
+    });
+
+    return false;
+  }
+
+  $(document).ready(function() {
+    $('.sub > a').click(function(){
+      sendAjaxRequest();
+    });
+  });
+</script>
