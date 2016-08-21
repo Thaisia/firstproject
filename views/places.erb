@@ -1,5 +1,15 @@
+<div class="tiles">
+  <div id="lightgallery" class="items">
+    <% @places.each do |pic| %>
+    <a href="<%=pic['pic_link']%>">
+      <div id="lightgallery" class="item">
+        <img class="pic" src="<%=pic['pic_link']%>">
+      </div>
+    </a>
+    <% end %>
+  </div>
+</div>
 
-places
 <script>
     $(function () {
         $(".tiles").tilesGallery({

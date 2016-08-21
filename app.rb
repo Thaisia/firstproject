@@ -13,7 +13,10 @@ end
 before do
   db = get_db
   @main = db.execute 'select * from main;'
-	@faces = db.execute 'select * from faces;'
+  @faces = db.execute 'select * from faces;'
+	@places = db.execute 'select * from places;'
+  @events = db.execute 'select * from events;'
+  @closeup = db.execute 'select * from closeup;'
 end
 
 get '/' do

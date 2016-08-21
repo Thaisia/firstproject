@@ -1,3 +1,14 @@
+<div class="tiles">
+  <div id="lightgallery" class="items">
+    <% @closeup.each do |pic| %>
+    <a href="<%=pic['pic_link']%>">
+      <div id="lightgallery" class="item">
+        <img class="pic" src="<%=pic['pic_link']%>">
+      </div>
+    </a>
+    <% end %>
+  </div>
+</div>
 
 <script>
     $(function () {
