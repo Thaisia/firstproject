@@ -1,62 +1,3 @@
-<div class="sidebar sidebar-pic">
-  <div class="mini-menu">
-    <ul>
-      <li class="sub">
-          <a href="/faces">Faces</a>
-          <ul>
-             <li><a href="/faces" >Kids</a></li>
-             <li><a href="#">Gentlemen</a></li>
-             <li class="sub"><a href="#">Ladies</a>
-                 <ul>
-                    <li><a href="#">Casual</a></li>
-                    <li><a href="#">Sensual</a></li>
-                    <li><a href="#">Fancy</a></li>
-                 </ul>
-             </li>
-
-             <li><a href="#">Group portraits</a></li>
-          </ul>
-      </li>
-      <li class="sub">
-          <a href="/places">Places</a>
-          <ul>
-             <li><a href="#">Nature</a></li>
-             <li><a href="#">Countries</a></li>
-             <li><a href="#">Sky</a></li>
-          </ul>
-      </li>
-      <li class="sub">
-          <a href="/events">Events</a>
-          <ul>
-              <li><a href="#">Festivals and conferences</a></li>
-              <li><a href="#">Social dances</a></li>
-              <li><a href="#">Sport</a></li>
-              <li><a href="#">Concerts</a></li>
-
-          </ul>
-      </li>
-      <li class="sub">
-          <a href="/closeup">Close up</a>
-          <ul>
-              <li><a href="#">Flora</a></li>
-              <li><a href="#">Fauna</a></li>
-              <li><a href="#">And other things</a></li>
-          </ul>
-      </li>
-      <li class="sub">
-          <a href="/coaching">Coaching</a>
-      </li>
-      <li class="sub">
-          <a href="/aboutme" >About me</a>
-      </li>
-    </ul>
-  </div>
-  <ul class="sidebar-tags">
-      <li><a href="/">place for tags</a></li>
-  </ul>
-</div>
-
-<div class="gallery-container content">
 <div id="ajaxresult"><div class="tiles">
   <div id="lightgallery" class="items">
     <% @main.each do |pic| %>
@@ -126,7 +67,7 @@ $(document).ready(function () {
       url: el.attr("href") + "?ajax=1",
       success: function(res) {
         $("#ajaxresult").html(res);
-      //  window.history.pushState(res, "faces", "/faces");
+        window.history.pushState(res, "", el.attr("href"));
       }
     });
 
