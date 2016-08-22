@@ -36,7 +36,7 @@
           </ul>
       </li>
       <li class="sub">
-          <a href="/events">Close up</a>
+          <a href="/closeup">Close up</a>
           <ul>
               <li><a href="#">Flora</a></li>
               <li><a href="#">Fauna</a></li>
@@ -44,7 +44,7 @@
           </ul>
       </li>
       <li class="sub">
-          <a href="/events">Coaching</a>
+          <a href="/coaching">Coaching</a>
       </li>
       <li class="sub">
           <a href="/aboutme" >About me</a>
@@ -57,7 +57,17 @@
 </div>
 
 <div class="gallery-container content">
-<div id="ajaxresult"></div>
+<div id="ajaxresult"><div class="tiles">
+  <div id="lightgallery" class="items">
+    <% @main.each do |pic| %>
+    <a href="<%=pic['pic_link']%>">
+      <div id="lightgallery" class="item">
+        <img class="pic" src="<%=pic['pic_link']%>">
+      </div>
+    </a>
+    <% end %>
+  </div>
+</div></div>
 </div>
 
 <script type="text/javascript">
@@ -111,9 +121,9 @@ $(document).ready(function () {
 </script>
 
 <script>
-  function sendAjaxRequest() {
+  function sendAjaxRequest(el) {
     $.ajax({
-      url: "/faces",
+      url: el.attr("href") + "?ajax=1",
       success: function(res) {
         $("#ajaxresult").html(res);
       //  window.history.pushState(res, "faces", "/faces");
@@ -125,7 +135,7 @@ $(document).ready(function () {
 
   $(document).ready(function() {
     $('.sub > a').click(function(){
-      sendAjaxRequest();
+      sendAjaxRequest($(this));
     });
   });
 </script>
