@@ -45,7 +45,7 @@
       </div>
 
       <div class="sidebar sidebar-pic">
-<!--        <div class="mini-menu">
+<!--       <div class="mini-menu">
           <ul>
             <li class="sub">
                 <a href="/gallery/faces">Faces</a>
@@ -96,31 +96,27 @@
                 <a href="/aboutme" >About me</a>
             </li>
           </ul>
+        </div>-->
+        <div class="mini-menu">
+          <ul>
+            <% @themes.each do |theme| %>
+              <% if theme['parent_id'] == 0 %>
+                <li class="sub">
+                  <a href="/gallery/<%=theme['theme_link']%>"><%=theme['theme_name']%></a>
+                    <ul>
+                      <% @themes.each do |subtheme| %>
+                        <% if subtheme['parent_id'] == theme['id'] %>
+                          <li>
+                            <a href="/gallery/<%=subtheme['theme_link']%>"><%=subtheme['theme_name']%></a>
+                          </li>
+                        <% end %>
+                      <% end %>
+                    </ul>
+                </li>
+            <% end %>
+          <% end %>
+          </ul>
         </div>
--->
-
-<div class="mini-menu">
-  <ul>
-    <% @themes.each do |theme| %>
-      <% if theme['parent_id'] == 0 %>
-        <li class="sub">
-          <a href="/gallery/<%=theme['theme_link']%>"><%=theme['theme_name']%></a>
-            <ul>
-              <% @themes.each do |subtheme| %>
-                <% if subtheme['parent_id'] == theme['id'] %>
-                  <li>
-                    <a href="/gallery/<%=subtheme['theme_link']%>"><%=subtheme['theme_name']%></a>
-                  </li>
-                <% end %>
-              <% end %>
-            </ul>
-        </li>
-    <% end %>
-  <% end %>
-  </ul>
-</div>
-
-
         <ul class="sidebar-tags">
             <li><a href="/">place for tags</a></li>
         </ul>

@@ -1,4 +1,5 @@
-body{ font-family: 'Raleway', sans-serif;}
+body{ font-family: 'Raleway', sans-serif;
+      background-color: grey;}
 
 .page{  max-width: 1200px;
         margin-left: auto;
