@@ -21,7 +21,7 @@
 <body>
     <div class="page">
       <div class="header">
-        <div class="headerr">
+        <div class="header-f">
           <span><h1><a href="/">Taisiya Bo</a></h1></span>
           <span class="h4"><a href="/">photoartist</a></span>
         </div>
@@ -48,46 +48,7 @@
 <!--       <div class="mini-menu">
           <ul>
             <li class="sub">
-                <a href="/gallery/faces">Faces</a>
-                <ul>
-                   <li><a href="#" >Kids</a></li>
-                   <li><a href="#">Gentlemen</a></li>
-                   <li class="sub"><a href="#">Ladies</a>
-                       <ul>
-                          <li><a href="#">Casual</a></li>
-                          <li><a href="#">Sensual</a></li>
-                          <li><a href="#">Fancy</a></li>
-                       </ul>
-                   </li>
 
-                   <li><a href="#">Group portraits</a></li>
-                </ul>
-            </li>
-            <li class="sub">
-                <a href="/gallery/places">Places</a>
-                <ul>
-                   <li><a href="#">Nature</a></li>
-                   <li><a href="#">Countries</a></li>
-                   <li><a href="#">Sky</a></li>
-                </ul>
-            </li>
-            <li class="sub">
-                <a href="/gallery/events">Events</a>
-                <ul>
-                    <li><a href="#">Festivals and conferences</a></li>
-                    <li><a href="#">Social dances</a></li>
-                    <li><a href="#">Sport</a></li>
-                    <li><a href="#">Concerts</a></li>
-
-                </ul>
-            </li>
-            <li class="sub">
-                <a href="/gallery/closeup">Close up</a>
-                <ul>
-                    <li><a href="#">Flora</a></li>
-                    <li><a href="#">Fauna</a></li>
-                    <li><a href="#">And other things</a></li>
-                </ul>
             </li>
             <li class="sub">
                 <a href="/coaching">Coaching</a>
@@ -100,7 +61,7 @@
 
 
 
-        <div class="mini-menu">
+        <div class="mini-menu sidebar-themes">
           <ul>
             <% @themes.each do |theme| %>
               <% if theme['parent_id'] == 0 %>
@@ -130,11 +91,11 @@
           </ul>
         </div>
 
-
-
-
         <ul class="sidebar-tags">
-            <li><a href="/">place for tags</a></li>
+            <% @tags.each do |tag|%>
+              <li><a href="/tags/<%= tag['tag_name']%>">#<%= tag['tag_name']%></a></li>
+            <% end%>
+
         </ul>
       </div>
       <div class="gallery-container content">

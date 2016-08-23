@@ -4,7 +4,7 @@ body{ font-family: 'Raleway', sans-serif;}
         margin-left: auto;
         margin-right: auto; }
 
-h1{ font-size: 40px;
+h1{ font-size: 46px;
     font-weight: 200;
     margin-top: 8px;
     margin-bottom: 0;
@@ -18,15 +18,13 @@ h1{ font-size: 40px;
 
 .header{  background-image: url(img/test_header_pic.png);
           max-width: 1200px;
-          height: 100px;
+          height: 110px;
           margin-top: 10px;
           margin-bottom: 3px; }
 
-.headerr{ float: left;  }
+.header-f{ float: left;  }
 
-.sidebar{ font-size: 20px;
-          font-weight: 300;
-          line-height: 150%;
+.sidebar{
           margin-top: 0;
           margin-left: 1px;
           margin-right: 1px;
@@ -36,18 +34,9 @@ h1{ font-size: 40px;
           background-image: url(img/test_sidebar_pic.png)   }
 
 
-.sidebar-themes{  padding-left: 15px;
-                  list-style: none;  }
-
-
-.sidebar-subthemes{ font-size: 16px;
-                    font-weight: 300;
-                    line-height: 120%;
-                    padding-left: 0;
-                    margin-left: 15px;
-                    margin-top: 0;
-                    margin-bottom: 30px;
-                    list-style: none;}
+.sidebar-themes{  font-size: 20px;
+                  line-height: 115%;
+                  padding-left: 0;  }
 
 .sidebar-tags{  padding: 0;
                 margin-left: 15px;
@@ -59,6 +48,11 @@ h1{ font-size: 40px;
 
 .content{ margin-left: 154px;
           color: black; }
+
+.content > a { color: black;
+                      text-decoration: none;  }
+.content > a:hover { color: black;
+                    text-decoration: none;  }
 
 a, a:hover{ color: white;
             text-decoration: none;  }
