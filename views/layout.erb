@@ -36,7 +36,7 @@
             <div>email ololo@dot.com</div>
           </div>
           <div class="useroptions">
-            <a href="/"><span>ru eng</span></a>
+            <a href="/"><span>ru eng latest</span></a>
             <a href="/"><span class="cow"><i class="fa fa-camera-retro" aria-hidden="true"></i></span></a>
             <a href="/"><span class="cob"><i class="fa fa-camera-retro" aria-hidden="true"></i></span></a>
 
@@ -97,26 +97,42 @@
             </li>
           </ul>
         </div>-->
+
+
+
         <div class="mini-menu">
           <ul>
             <% @themes.each do |theme| %>
               <% if theme['parent_id'] == 0 %>
-                <li class="sub">
+                <li class="sub ajax">
                   <a href="/gallery/<%=theme['theme_link']%>"><%=theme['theme_name']%></a>
                     <ul>
                       <% @themes.each do |subtheme| %>
                         <% if subtheme['parent_id'] == theme['id'] %>
-                          <li>
+                          <li class="sub ajax">
                             <a href="/gallery/<%=subtheme['theme_link']%>"><%=subtheme['theme_name']%></a>
+                              <ul>
+                                <% @themes.each do |subsubtheme| %>
+                                  <% if subsubtheme['parent_id'] == subtheme['id'] %>
+                                    <li class="ajax">
+                                      <a href="/gallery/<%=subsubtheme['theme_link']%>"><%=subsubtheme['theme_name']%></a>
+                                    </li>
+                                  <% end %>
+                                <% end %>
+                              </ul>
                           </li>
                         <% end %>
                       <% end %>
                     </ul>
                 </li>
+              <% end %>
             <% end %>
-          <% end %>
           </ul>
         </div>
+
+
+
+
         <ul class="sidebar-tags">
             <li><a href="/">place for tags</a></li>
         </ul>
@@ -130,6 +146,86 @@
         <p style="clear:both;">
         </p>
 
+        <script type="text/javascript">
+        $(document).ready(function () {
+          $('.sub > a').click(function(){
+            clicked = $(this);
+            $('.sub ul').each(function() {
+              if (!($(this).is(clicked.closest("ul")))) {
+                $(this).slideUp();
+              }
+            });
+
+            if ($(this).next().is(":visible")){
+              $(this).next().slideUp();
+            } else {
+              $(this).next().slideToggle();
+            }
+            return false;
+          });
+
+          $('.mini-menu > ul > li > a').click(function(){
+            $('.mini-menu > ul > li > a, .sub a').removeClass('active');
+            $(this).addClass('active');
+          });
+
+          $('.sub ul li a').click(function(){
+            $('.sub ul li a').removeClass('active');
+            $(this).addClass('active');
+          });
+        });
+        </script>
+
+        <script>
+          function sendAjaxRequest(el) {
+            $.ajax({
+              url: el.attr("href") + "?ajax=1",
+              success: function(res) {
+                $("#ajaxresult").html(res);
+                window.history.pushState(res, "", el.attr("href"));
+
+                $(".tiles").tilesGallery({
+                    height: 800,
+                    margin: 4,
+                    enableTwitter: true,
+                    enableFacebook: true,
+                    enableGplus: true,
+                    enablePinterest: true
+                });
+
+                $("#lightgallery").lightGallery();
+
+              }
+            });
+
+            return false;
+          }
+
+          $(document).ready(function() {
+            $('.ajax > a').click(function(){
+              return sendAjaxRequest($(this));
+            });
+          });
+        </script>
+
+        <script>
+            $(function () {
+                $(".tiles").tilesGallery({
+                    height: 800,
+                    margin: 4,
+                    enableTwitter: true,
+                    enableFacebook: true,
+                    enableGplus: true,
+                    enablePinterest: true
+                });
+            });
+        </script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#lightgallery").lightGallery();
+            });
+        </script>
 
 </body>
 </html>
