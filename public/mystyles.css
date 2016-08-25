@@ -1,4 +1,4 @@
-body{ font-family: 'Raleway', sans-serif;}
+body{ font-family: 'Raleway', sans-serif; }
 
 .page{  max-width: 1200px;
         margin-left: auto;
@@ -13,14 +13,13 @@ h1{ font-size: 46px;
 .h4{  font-size: 24px;
       font-weight: 300;
       margin-left: 15px;
-      margin-top: 0;}
+      margin-top: 0;  }
 
 .header{  background-image: url(img/test_header_pic.png);
           max-width: 1200px;
-          height: 110px;
+          height: 107px;
           margin-top: 10px;
           margin-bottom: 3px; }
-
 
 .header-f{ float: left;  }
 
@@ -33,11 +32,9 @@ h1{ font-size: 46px;
           float: left;
           background-image: url(img/test_sidebar_pic.png)   }
 
-
 .sidebar-themes{  font-size: 20px;
                   line-height: 100%;
                   padding-left: 0;  }
-
 
 .sidebar-tags{  padding: 0;
                 margin-left: 15px;
@@ -45,56 +42,50 @@ h1{ font-size: 46px;
                 margin-right: 15px;
                 font-size: 13px;
                 line-height: 180%;
-                list-style: none;}
+                list-style: none; }
 
 .sidebar-texts{ padding-left: 0;
-  margin-left: 20px;}
+                margin-left: 20px;  }
 
 .content{ margin-left: 154px;
           color: black; }
-
 
 .header a,
 .header a:hover,
 .sidebar a,
 .sidebar a:hover{ color: white;
-              text-decoration: none;  }
+                  text-decoration: none;  }
 
+.buttons{   float: right;
+            margin-right: 20px;
+            margin-top: 28px; }
 
-.useroptions{ position: absolute;
-              bottom: 16px;
-              font-size: 15px;
-              font-weight: 200;
-              margin-left:  12px;}
+.buttons a,
+.buttons a:hover{color:  rgba(255, 255, 255, 0.7);}
 
+.btn-12{   display: block; }
 
-.btn {display: inline;
-      border-style: solid;
-      border-width: 1px;
-      padding-left: 3px;
-      padding-right: 3px;
-      padding-top: 1px;
-      padding-bottom: 2px;
-      border-color: rgba(255, 255, 255, 0.5); }
+.btn-34{  display: block;
+          margin-top: 11px; }
 
-.btn-w{ padding-left: 6px;
-        padding-right: 5px;
-      }
+.btn{   display: inline;
+        border-style: solid;
+        border-width: 1px;
+        padding-top: 2px;
+        padding-bottom: 3px;
+        border-color: rgba(255, 255, 255, 0.7); }
 
-.btn-b{ padding-left: 6px;
-        padding-right: 6px;}
+.btn-gt{  padding-left: 4px;
+          padding-right: 4px; }
 
-.btn-cn{position: absolute;
-              bottom: 50px;
-              font-size: 15px;
-              font-weight: 200;
-              margin-left:  12px;
- }
+.btn-in{  padding-left: 4px;
+          padding-right: 4px; }
 
-.btn-cn  a,
-.btn-cn a:hover {color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;}
+.btn-vk{  padding-left: 3px;
+          padding-right: 3px; }
 
+.btn-fb{  padding-left: 6px;
+          padding-right: 7px; }
 
 .mini-menu {  margin: 0 auto;
               max-width: 220px;
