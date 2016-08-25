@@ -13,8 +13,7 @@ h1{ font-size: 46px;
 .h4{  font-size: 24px;
       font-weight: 300;
       margin-left: 15px;
-      margin-top: 1px;
-      color: white; }
+      margin-top: 0;}
 
 .header{  background-image: url(img/test_header_pic.png);
           max-width: 1200px;
@@ -22,12 +21,13 @@ h1{ font-size: 46px;
           margin-top: 10px;
           margin-bottom: 3px; }
 
+
 .header-f{ float: left;  }
 
-.sidebar{
+.sidebar{ position: relative;
           margin-top: 0;
-          margin-left: 1px;
-          margin-right: 1px;
+          margin-left: 0;
+          margin-right: 0;
           width: 150px;
           height: 800px;
           float: left;
@@ -35,8 +35,9 @@ h1{ font-size: 46px;
 
 
 .sidebar-themes{  font-size: 20px;
-                  line-height: 115%;
+                  line-height: 100%;
                   padding-left: 0;  }
+
 
 .sidebar-tags{  padding: 0;
                 margin-left: 15px;
@@ -46,40 +47,56 @@ h1{ font-size: 46px;
                 line-height: 180%;
                 list-style: none;}
 
+.sidebar-texts{ padding-left: 0;
+  margin-left: 20px;}
+
 .content{ margin-left: 154px;
           color: black; }
 
-.content > a { color: black;
-                      text-decoration: none;  }
-.content > a:hover { color: black;
-                    text-decoration: none;  }
 
-a, a:hover{ color: white;
-            text-decoration: none;  }
+.header a,
+.header a:hover,
+.sidebar a,
+.sidebar a:hover{ color: white;
+              text-decoration: none;  }
 
-.icons{ float: right;
-        font-size: 20px;
-        font-weight: lighter;
-        color: white;
-        margin-top: 15px;
-        margin-right: 15px;
-        text-align: right}
 
-.contacts{  font-size: 14px;
-            font-weight: 300;
-            text-align: right;}
+.useroptions{ position: absolute;
+              bottom: 16px;
+              font-size: 15px;
+              font-weight: 200;
+              margin-left:  12px;}
 
-.useroptions{ font-size: 14px;
-              font-weight: 600;;
-              text-align: right;}
 
-.cow{  font-size: 15px;
-        color: white; }
+.btn {display: inline;
+      border-style: solid;
+      border-width: 1px;
+      padding-left: 3px;
+      padding-right: 3px;
+      padding-top: 1px;
+      padding-bottom: 2px;
+      border-color: rgba(255, 255, 255, 0.5); }
 
-.cob{ font-size: 16px;
-      color: black; }
+.btn-w{ padding-left: 6px;
+        padding-right: 5px;
+      }
 
-.mini-menu {  margin: 0px auto;
+.btn-b{ padding-left: 6px;
+        padding-right: 6px;}
+
+.btn-cn{position: absolute;
+              bottom: 50px;
+              font-size: 15px;
+              font-weight: 200;
+              margin-left:  12px;
+ }
+
+.btn-cn  a,
+.btn-cn a:hover {color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;}
+
+
+.mini-menu {  margin: 0 auto;
               max-width: 220px;
               overflow: hidden; }
 
@@ -128,5 +145,3 @@ a, a:hover{ color: white;
                               text-align: center;
                               text-shadow:none;
                               font-weight: 500;}
-
-/*.mini-menu .sub > a.active:before{  color: lightblue;  }

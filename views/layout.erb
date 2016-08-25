@@ -26,57 +26,26 @@
           <span class="h4"><a href="/">photoartist</a></span>
         </div>
 
-
-        <span class="icons">
-          <a href="/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-          <a href="/"><i class="fa fa-vk" aria-hidden="true"></i></a>
-          <a href="/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-          <div class="contacts">
-            <div>phone 322-223-66</div>
-            <div>email ololo@dot.com</div>
-          </div>
-          <div class="useroptions">
-            <a href="/"><span>ru eng latest</span></a>
-            <a href="/"><span class="cow"><i class="fa fa-camera-retro" aria-hidden="true"></i></span></a>
-            <a href="/"><span class="cob"><i class="fa fa-camera-retro" aria-hidden="true"></i></span></a>
-
-          </div>
-        </span>
       </div>
 
       <div class="sidebar sidebar-pic">
-<!--       <div class="mini-menu">
-          <ul>
-            <li class="sub">
-
-            </li>
-            <li class="sub">
-                <a href="/coaching">Coaching</a>
-            </li>
-            <li class="sub">
-                <a href="/aboutme" >About me</a>
-            </li>
-          </ul>
-        </div>-->
-
-
 
         <div class="mini-menu sidebar-themes">
           <ul>
             <% @themes.each do |theme| %>
               <% if theme['parent_id'] == 0 %>
                 <li class="sub ajax">
-                  <a href="/gallery/<%=theme['theme_link']%>"><%=theme['theme_name']%></a>
+                  <a href="/themes/<%=theme['theme_link']%>"><%=theme['theme_name']%></a>
                     <ul>
                       <% @themes.each do |subtheme| %>
                         <% if subtheme['parent_id'] == theme['id'] %>
                           <li class="sub ajax">
-                            <a href="/gallery/<%=subtheme['theme_link']%>"><%=subtheme['theme_name']%></a>
+                            <a href="/themes/<%=subtheme['theme_link']%>"><%=subtheme['theme_name']%></a>
                               <ul>
                                 <% @themes.each do |subsubtheme| %>
                                   <% if subsubtheme['parent_id'] == subtheme['id'] %>
                                     <li class="ajax">
-                                      <a href="/gallery/<%=subsubtheme['theme_link']%>"><%=subsubtheme['theme_name']%></a>
+                                      <a href="/themes/<%=subsubtheme['theme_link']%>"><%=subsubtheme['theme_name']%></a>
                                     </li>
                                   <% end %>
                                 <% end %>
@@ -91,13 +60,48 @@
           </ul>
         </div>
 
+        <div class="sidebar-texts">
+          <div><a href="/blog">Blog</a></div>
+          <div><a href="/coaching">Coaching</a></div>
+          <div><a href="/aboutme">About me</a></div>
+        </div>
+
         <ul class="sidebar-tags">
+
+
             <% @tags.each do |tag|%>
               <li><a href="/tags/<%= tag['tag_name']%>">#<%= tag['tag_name']%></a></li>
             <% end%>
 
         </ul>
+
+        <div class="buttons">
+
+
+
+        <div class="useroptions">
+          <div class="btn"><a href="/">rus</a></div>
+          <div class="btn"><a href="/">eng</a></div>
+          <div class="btn btn-w"><a href="/">w</a></div>
+          <div class="btn btn-b"><a href="/">b</a></div>
+        </div>
+
+        <div class="btn-cn">
+          <div class="btn"><a href="/"><i class="fa fa-instagram" aria-hidden="true"></i></a></div>
+          <div class="btn"><a href="/"><i class="fa fa-vk" aria-hidden="true"></i></a></div>
+          <div class="btn"><a href="/"><i class="fa fa-facebook" aria-hidden="true"></i></a></div>
+          <div class="btn"><a href="/"><i class="fa fa-github-alt" aria-hidden="true"></i></a></div>
+          <div class="btn"><a href="/"><i class="fa fa-odnoklassniki" aria-hidden="true"></i></a></div>
+        </div>
+
       </div>
+        </div>
+
+
+
+
+
+
       <div class="gallery-container content">
             <%if @error && @error.length > 0 then %>
                 <div><%=@error%></div>
