@@ -20,9 +20,7 @@
 
 
 
-
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500&subset=cyrillic" rel="stylesheet">
-
+ <link href="https://fonts.googleapis.com/css?family=Assistant:200,300,400,600" rel="stylesheet">
 
 
 
@@ -31,8 +29,8 @@
     <div class="page">
       <div class="header">
         <div class="header-f">
-            <span><h1><a href="/">Taisiya Bo</a></h1></span>
-            <span class="h4"><a href="/">photoartist</a></span>
+            <a href="/"><span><h1>Taisiya Bo</h1></span>
+            <span class="h4">photoartist</span></a>
         </div>
 
         <div class="buttons">
@@ -85,14 +83,10 @@
 
 
         <ul class="sidebar-tags">
-
-
             <% @tags.each do |tag|%>
-              <li ><a href="/tags/<%= tag['tag_name']%>">#<%= tag['tag_name']%></a></li>
+              <li class="ajax"><a href="/tags/<%= tag['tag_name']%>">#<%= tag['tag_name']%></a></li>
             <% end%>
-
         </ul>
-
 
         </div>
 
@@ -140,12 +134,17 @@
         });
         </script>
 
+
+
+
+
+
         <script>
           function sendAjaxRequest(el) {
             $.ajax({
               url: el.attr("href") + "?ajax=1",
               success: function(res) {
-                $("#ajaxresult").html(res);
+                $("#ajaxresult").html(res); //???
                 window.history.pushState(res, "", el.attr("href"));
 
                 $(".tiles").tilesGallery({
@@ -171,6 +170,12 @@
             });
           });
         </script>
+
+
+
+
+
+
 
         <script>
             $(function () {

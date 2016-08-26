@@ -1,13 +1,13 @@
 body{
-    /*font-family: 'Assistant', sans-serif;
+    font-family: 'Assistant', sans-serif;
 
-    font-family: 'Dosis', sans-serif;
+    /*font-family: 'Dosis', sans-serif;
 
     font-family: 'Flamenco', cursive;
 
-    font-family: 'Palanquin', sans-serif;*/
+    font-family: 'Palanquin', sans-serif;
 
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Ubuntu', sans-serif;*/
 
 
       background-color: black;
@@ -18,14 +18,14 @@ body{
         margin-right: auto; }
 
 h1{ font-size: 48px;
-    font-weight: 300;
+    font-weight: 200;
     margin-top: 8px;
     margin-bottom: 0;
     margin-left: 8px;
   line-height: 100%}
 
 .h4{  font-size: 24px;
-      font-weight: 400;
+      font-weight: 300;
       margin-left: 15px;
       margin-top: 0;  }
 
@@ -62,6 +62,8 @@ h1{ font-size: 48px;
                 list-style: none; }
 
 
+
+
 .content{ margin-left: 154px;
           color: white }
 
@@ -74,6 +76,8 @@ h1{ font-size: 48px;
 .header a:hover,
 .sidebar a:hover{ color: rgba(0, 0, 0, 0.5);
                   text-decoration: none;  }
+
+
 
 .buttons{   float: right;
             margin-right: 20px;
@@ -143,7 +147,7 @@ h1{ font-size: 48px;
                         font-weight: 300;  }
 
 .mini-menu .sub ul li a:hover{color: rgba(0, 0, 0, 0.5)}
-.mini-menu .sub ul li a.active {color: black;
+.mini-menu .sub ul li a.active {color: black; /* ????*/
                                     font-weight: 400; }
 
 .mini-menu .sub ul li a:after{ float: left;
