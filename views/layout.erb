@@ -12,34 +12,39 @@
     <script src="https://use.fontawesome.com/886e6e746d.js"></script>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="Stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,300i,500" rel="stylesheet">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.2.21/css/lightgallery.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.2.21/css/lg-transitions.css" rel="stylesheet">
     <link href="/css/jquery-tilesgallery.css" rel="Stylesheet" />
     <link href="/mystyles.css" rel="stylesheet">
+
+
+
+
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500&subset=cyrillic" rel="stylesheet">
+
+
+
+
   </head>
 <body>
     <div class="page">
       <div class="header">
         <div class="header-f">
-          <span><h1><a href="/">Taisiya Bo</a></h1></span>
-          <span class="h4"><a href="/">photoartist</a></span>
+            <span><h1><a href="/">Taisiya Bo</a></h1></span>
+            <span class="h4"><a href="/">photoartist</a></span>
         </div>
 
-            <div class="buttons">
-
-              <div class="btn-12">
-                <div class="btn btn-gt"><a href="/"><i class="fa fa-github-alt" aria-hidden="true"></i></a></div>
-                <div class="btn btn-in"><a href="/"><i class="fa fa-instagram" aria-hidden="true"></i></a></div>
-
-            </div>
-            <div class="btn-34">
-              <div class="btn btn-vk"><a href="/"><i class="fa fa-vk" aria-hidden="true"></i></a></div>
-              <div class="btn btn-fb"><a href="/"><i class="fa fa-facebook" aria-hidden="true"></i></a></div>
-
-            </div>
-
+        <div class="buttons">
+          <div class="btn-12">
+            <div class="btn btn-gt"><a href="/"><i class="fa fa-github-alt" aria-hidden="true"></i></a></div>
+            <div class="btn btn-in"><a href="/"><i class="fa fa-instagram" aria-hidden="true"></i></a></div>
           </div>
+          <div class="btn-34">
+            <div class="btn btn-vk"><a href="/"><i class="fa fa-vk" aria-hidden="true"></i></a></div>
+            <div class="btn btn-fb"><a href="/"><i class="fa fa-facebook" aria-hidden="true"></i></a></div>
+          </div>
+        </div>
       </div>
 
       <div class="sidebar sidebar-pic">
@@ -58,7 +63,7 @@
                               <ul>
                                 <% @themes.each do |subsubtheme| %>
                                   <% if subsubtheme['parent_id'] == subtheme['id'] %>
-                                    <li class="ajax">
+                                    <li class="ajax sstheme">
                                       <a href="/themes/<%=subsubtheme['theme_link']%>"><%=subsubtheme['theme_name']%></a>
                                     </li>
                                   <% end %>
@@ -71,20 +76,19 @@
                 </li>
               <% end %>
             <% end %>
+            <li class="sub ajax"><a href="/blog">Blog</a></li>
+            <li class="sub ajax"><a href="/coaching">Coaching</a></li>
+            <li class="sub ajax"><a href="/aboutme">About me</a></li>
           </ul>
         </div>
 
-        <div class="sidebar-texts">
-          <div><a href="/blog">Blog</a></div>
-          <div><a href="/coaching">Coaching</a></div>
-          <div><a href="/aboutme">About me</a></div>
-        </div>
+
 
         <ul class="sidebar-tags">
 
 
             <% @tags.each do |tag|%>
-              <li><a href="/tags/<%= tag['tag_name']%>">#<%= tag['tag_name']%></a></li>
+              <li ><a href="/tags/<%= tag['tag_name']%>">#<%= tag['tag_name']%></a></li>
             <% end%>
 
         </ul>
@@ -149,7 +153,7 @@
                     margin: 4,
                     enableTwitter: true,
                     enableFacebook: true,
-                    enableGplus: true,
+                    enableGplus: false,
                     enablePinterest: true
                 });
 
@@ -175,7 +179,7 @@
                     margin: 4,
                     enableTwitter: true,
                     enableFacebook: true,
-                    enableGplus: true,
+                    enableGplus: false,
                     enablePinterest: true
                 });
             });

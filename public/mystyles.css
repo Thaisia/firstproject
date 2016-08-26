@@ -1,17 +1,31 @@
-body{ font-family: 'Raleway', sans-serif; }
+body{
+    /*font-family: 'Assistant', sans-serif;
+
+    font-family: 'Dosis', sans-serif;
+
+    font-family: 'Flamenco', cursive;
+
+    font-family: 'Palanquin', sans-serif;*/
+
+    font-family: 'Ubuntu', sans-serif;
+
+
+      background-color: black;
+      color: white}
 
 .page{  max-width: 1200px;
         margin-left: auto;
         margin-right: auto; }
 
-h1{ font-size: 46px;
-    font-weight: 200;
+h1{ font-size: 48px;
+    font-weight: 300;
     margin-top: 8px;
     margin-bottom: 0;
-    margin-left: 8px; }
+    margin-left: 8px;
+  line-height: 100%}
 
 .h4{  font-size: 24px;
-      font-weight: 300;
+      font-weight: 400;
       margin-left: 15px;
       margin-top: 0;  }
 
@@ -32,36 +46,44 @@ h1{ font-size: 46px;
           float: left;
           background-image: url(img/test_sidebar_pic.png)   }
 
-.sidebar-themes{  font-size: 20px;
-                  line-height: 100%;
+.sidebar-themes{  font-size: 22px;
+
+                  line-height: 110%;
                   padding-left: 0;  }
 
 .sidebar-tags{  padding: 0;
                 margin-left: 15px;
                 margin-top: 20px;
                 margin-right: 15px;
-                font-size: 13px;
-                line-height: 180%;
+                font-size: 15px;
+                font-weight: 300;
+                font-style: italic;
+                line-height: 120%;
                 list-style: none; }
 
-.sidebar-texts{ padding-left: 0;
-                margin-left: 20px;  }
 
 .content{ margin-left: 154px;
-          color: black; }
+          color: white }
+
 
 .header a,
+.sidebar a{ color: black;
+                  text-decoration: none;  }
+
+.buttons a:hover,
 .header a:hover,
-.sidebar a,
-.sidebar a:hover{ color: white;
+.sidebar a:hover{ color: rgba(0, 0, 0, 0.5);
                   text-decoration: none;  }
 
 .buttons{   float: right;
             margin-right: 20px;
             margin-top: 28px; }
 
-.buttons a,
-.buttons a:hover{color:  rgba(255, 255, 255, 0.7);}
+.buttons a{ color: rgba(0, 0, 0, 0.7);
+            text-decoration: none;  }
+
+
+
 
 .btn-12{   display: block; }
 
@@ -73,7 +95,7 @@ h1{ font-size: 46px;
         border-width: 1px;
         padding-top: 2px;
         padding-bottom: 3px;
-        border-color: rgba(255, 255, 255, 0.7); }
+        border-color: rgba(0, 0, 0, 0.7); }
 
 .btn-gt{  padding-left: 4px;
           padding-right: 4px; }
@@ -98,30 +120,35 @@ h1{ font-size: 46px;
 .mini-menu > ul > li {  position: relative; }
 
 .mini-menu > ul > li > a {  display: block;
-                            padding: .7em 1em;
+                            padding: .3em .6em;
                             outline: 0;
                             text-decoration: none;
-                            font-weight: normal;  }
+                            font-weight: 300;  }
 
-.mini-menu > ul > li > a:hover,
-.mini-menu > ul > li > a.active { color: green;  }
+.mini-menu > ul > li > a:hover{color: rgba(0, 0, 0, 0.5)}
+.mini-menu > ul > li > a.active { color: black;
+                                    font-weight: 400;}
+
+
 
 .mini-menu .sub  ul { display: none;
                       overflow: hidden; }
 
 .mini-menu .sub ul li a { display: block;
-                          padding: .7em 1em;
-                          color: blue;
-                          font-size: 12px;
-                          text-decoration: none;  }
+                          padding:  .7em 1.7em;
+                          color: black;
+                          font-size: 16px;
+                          text-decoration: none;
+                          line-height: 80%;
+                        font-weight: 300;  }
 
-.mini-menu .sub ul li a:hover,
-.mini-menu .sub ul li a.active {  padding-left: 1.3em;
-                                  color: red; }
+.mini-menu .sub ul li a:hover{color: rgba(0, 0, 0, 0.5)}
+.mini-menu .sub ul li a.active {color: black;
+                                    font-weight: 400; }
 
 .mini-menu .sub ul li a:after{ float: left;
                                 margin-right:6px;
-                                line-height: 12px;  }
+                                line-height: 100%;  }
 
 .mini-menu .sub > a:before {  height:12px;
                               width:12px;
@@ -130,9 +157,18 @@ h1{ font-size: 46px;
                               position: absolute;
                               right: 10px;
                               top: 12px;
-                              line-height: .8em;
+                              line-height: 100%;
                               color: red;
                               text-indent: 0;
                               text-align: center;
                               text-shadow:none;
                               font-weight: 500;}
+
+.sstheme a{ padding-left: 2.8em!important;}
+
+.sstheme a:active{  padding-left: 2.8em!important;
+                    font-weight: 400!important;
+                    color: black!important;}
+
+.sstheme a:hover {color: rgba(0, 0, 0, 0.5)!important;
+                  padding-left: 2.8em!important;}
