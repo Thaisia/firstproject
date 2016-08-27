@@ -3,7 +3,7 @@
 
 <% @photos.each do |pic|%>
   <% if @counter % 10 == 1 and @photos.length - @counter > 4 %>
-    <div id="counter-<%=@counter%>" class="tiles" <% if @counter != 1 %> style="display:none;"<% end %>>
+    <div id="counter-<%=@counter%>" class="ptiles" <% if @counter != 1 %> style="display:none;"<% end %>>
       <div class="items">
   <% end %>
 
@@ -13,7 +13,7 @@
 
   <% if @counter % 10 == 0 and @photos.length - @counter > 5 %>
       </div>
-    <a href="#" onclick="return showPage(this, <%=@counter%>);">next</a>
+    <%=@counter%><a href="#" onclick="return showPage(this, <%=@counter%>);">next</a>
     </div>
   <% end %>
 
@@ -34,7 +34,7 @@
       });
 
       $("#lightgallery").lightGallery({
-        selector: '.tiles > .items > .item'
+        selector: '.ptiles > .items > .item'
       });
     });
 
@@ -42,7 +42,7 @@
       $(el).parent().hide();
       $(el).parent().next().show();
 
-      $(el).parent().next().tilesGallery({
+      $(el).parent().next().first().tilesGallery({
           height: 800,
           margin: 3,
           enableTwitter: true,
@@ -50,8 +50,6 @@
           enableGplus: false,
           enablePinterest: true
       });
-
-      $(el).parent().next().children().first().lightGallery();
 
       return false;
     }
