@@ -44,6 +44,19 @@ get '/coaching' do
 end
 
 get '/aboutme' do
+  db = get_db
+    @test = db.execute 'select id from pho;'
+
+
+
+
+@counter = 1
+
+
+
+
+
+
   if params["ajax"] == "1"
     erb :aboutme, :layout => false
   else

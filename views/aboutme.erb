@@ -1,1 +1,26 @@
-about me
+
+<% @test.each do |i|%>
+  <% if @counter % 10 == 1 and @test.length - @counter > 4 %>
+    <div id="counter-<%=@counter%>" <% if @counter != 1 %> style="display:none;"<% end %>>
+  <% end %>
+
+  <p><%= i['id']%></p>
+
+  <% if @counter % 10 == 0 and @test.length - @counter > 5 %>
+    <a href="#" onclick="return showPage(this, <%=@counter%>);">next</a>
+    <hr>
+    </div>
+  <% end %>
+
+  <% @counter += 1 %>
+<% end %>
+  </div>
+
+
+  <script>
+    function showPage(el, image_num) {
+      $(el).parent().hide();
+      $(el).parent().next().show();
+      return false;
+    }
+  </script>
