@@ -139,6 +139,7 @@
 
 
         <script>
+        /*
           function sendAjaxRequest(el) {
             $.ajax({
               url: el.attr("href") + "?ajax=1",
@@ -155,7 +156,7 @@
                     enablePinterest: true
                 });
 
-                $("#lightgallery").lightGallery();
+                $(".lightgallery").each(function() {$(this).lightGallery();});
 
               }
             });
@@ -168,6 +169,7 @@
               return sendAjaxRequest($(this));
             });
           });
+        */
         </script>
 
 
@@ -177,6 +179,7 @@
 
 
         <script>
+        /*
             $(function () {
                 $(".tiles").tilesGallery({
                     height: 800,
@@ -187,12 +190,15 @@
                     enablePinterest: true
                 });
             });
+        */
         </script>
 
         <script type="text/javascript">
+        /*
             $(document).ready(function() {
                 $("#lightgallery").lightGallery();
             });
+        */
         </script>
 
 </body>

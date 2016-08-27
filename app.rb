@@ -45,16 +45,9 @@ end
 
 get '/aboutme' do
   db = get_db
-    @test = db.execute 'select id from pho;'
-
-
-
+    @photos = db.execute 'select pic_link from pho;'
 
 @counter = 1
-
-
-
-
 
 
   if params["ajax"] == "1"

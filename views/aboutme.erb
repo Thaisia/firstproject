@@ -1,26 +1,58 @@
 
-<% @test.each do |i|%>
-  <% if @counter % 10 == 1 and @test.length - @counter > 4 %>
-    <div id="counter-<%=@counter%>" <% if @counter != 1 %> style="display:none;"<% end %>>
+<div id="lightgallery">
+
+<% @photos.each do |pic|%>
+  <% if @counter % 10 == 1 and @photos.length - @counter > 4 %>
+    <div id="counter-<%=@counter%>" class="tiles" <% if @counter != 1 %> style="display:none;"<% end %>>
+      <div class="items">
   <% end %>
 
-  <p><%= i['id']%></p>
+    <div class="item" data-src="/<%=pic['pic_link']%>">
+      <img class="pic" src="/<%=pic['pic_link']%>">
+    </div>
 
-  <% if @counter % 10 == 0 and @test.length - @counter > 5 %>
+  <% if @counter % 10 == 0 and @photos.length - @counter > 5 %>
+      </div>
     <a href="#" onclick="return showPage(this, <%=@counter%>);">next</a>
-    <hr>
     </div>
   <% end %>
 
   <% @counter += 1 %>
 <% end %>
-  </div>
+</div>
 
 
   <script>
+    $(function() {
+      $("#counter-1").tilesGallery({
+          height: 800,
+          margin: 3,
+          enableTwitter: true,
+          enableFacebook: true,
+          enableGplus: false,
+          enablePinterest: true
+      });
+
+      $("#lightgallery").lightGallery({
+        selector: '.tiles > .items > .item'
+      });
+    });
+
     function showPage(el, image_num) {
       $(el).parent().hide();
       $(el).parent().next().show();
+
+      $(el).parent().next().tilesGallery({
+          height: 800,
+          margin: 3,
+          enableTwitter: true,
+          enableFacebook: true,
+          enableGplus: false,
+          enablePinterest: true
+      });
+
+      $(el).parent().next().children().first().lightGallery();
+
       return false;
     }
   </script>
