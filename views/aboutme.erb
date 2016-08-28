@@ -7,13 +7,15 @@
       <div class="items">
   <% end %>
 
-    <div class="item" data-src="/<%=pic['pic_link']%>">
-      <img class="pic" src="/<%=pic['pic_link']%>">
+    <div class="item" data-src="/<%=pic['pic_link']%>"> <!-- fullsize -->
+      <img class="pic" src="/<%=pic['pic_link']%>"> <!-- thumb -->
     </div>
 
   <% if @counter % 10 == 0 and @photos.length - @counter > 5 %>
       </div>
-    <%=@counter%><a href="#" onclick="return showPage(this, <%=@counter%>);">next</a>
+
+      <a href="#" onclick="return showPage(this, <%=@counter%>);">next</a>
+
     </div>
   <% end %>
 
@@ -24,13 +26,18 @@
 
   <script>
     $(function() {
+      /*
+      $("#counter-1").find(".pic").each(function() {
+        $(this).attr("src", $(this).data("src"));
+      });
+      */
       $("#counter-1").tilesGallery({
           height: 800,
           margin: 3,
-          enableTwitter: true,
-          enableFacebook: true,
+          enableTwitter: false,
+          enableFacebook: false,
           enableGplus: false,
-          enablePinterest: true
+          enablePinterest: false
       });
 
       $("#lightgallery").lightGallery({
@@ -39,16 +46,26 @@
     });
 
     function showPage(el, image_num) {
-      $(el).parent().hide();
+      //$(el).parent().hide();
+      $(el).hide();
+      /*
+      $(el).parent().next().find(".pic").each(function() {
+        $(this).attr("src", $(this).data("src"));
+      });
+      */
       $(el).parent().next().show();
 
+      $(el).parent().next().find(".items").css("margin-left", -134);
       $(el).parent().next().first().tilesGallery({
-          height: 800,
+          height: 1600,
+          width: 1200,
+
           margin: 3,
-          enableTwitter: true,
-          enableFacebook: true,
+
+          enableTwitter: false,
+          enableFacebook: false,
           enableGplus: false,
-          enablePinterest: true
+          enablePinterest: false
       });
 
       return false;

@@ -52,7 +52,9 @@ h1{ font-size: 48px;
                 line-height: 120%;
                 list-style: none; }
 
-
+.sidebar-tags a.active {
+  font-weight: bold;
+}
 
 
 .content{ margin-left: 133px;
@@ -159,11 +161,32 @@ h1{ font-size: 48px;
                               text-shadow:none;
                               font-weight: 500;}
 
-.sstheme a{ padding-left: 2.8em!important;}
+.sstheme a{ padding-left: 2.8em !important;}
 
-.sstheme a:active{  padding-left: 2.8em!important;
-                    font-weight: 400!important;
-                    color: black!important;}
+.hover{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #000;
+  background-color: rgba(0,0,0,0.7);
+  transition: all .3s;
+  opacity: 0;
+  display: table;
+  width: 100%;
+  height: 100%;
+}
 
-.sstheme a:hover {color: rgba(0, 0, 0, 0.5)!important;
-                  padding-left: 2.8em!important;}
+.icon {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  color: #fff;
+  font-size: 20px;
+}
+
+.lg-thumb-item {
+  border-color: green !important;
+}
+.items{margin-bottom: 3px;}

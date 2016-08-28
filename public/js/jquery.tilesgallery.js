@@ -3,15 +3,15 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * jQuery Tiles Gallery
  * Version: 2.0
  * Author: GreenTreeLabs <http://www.greentreelabs.net>
@@ -57,17 +57,17 @@
 
     Plugin.prototype.createGrid = function () {
         var plugin = this;
-        
+
         for (var i = 0; i < this.$items.not(".jtg-hidden").length; i++)
             this.tiles.push(plugin.getSlot());
-        
+
         this.tiles.sort(function (x, y) {
             return x.position - y.position;
         });
 
         this.$items.not(".jtg-hidden").each(function (i, item) {
             var slot = plugin.tiles[i];
-            
+
             $(item)
 		   		.data('size', slot)
 		   		.addClass('tiled')
@@ -98,7 +98,7 @@
                 height: this.$itemsCnt.height(),
                 area: this.$itemsCnt.width() * this.$itemsCnt.height(),
                 position: 0
-            };            
+            };
             return tile;
         }
 
@@ -144,7 +144,7 @@
 
         this.tiles[maxTileIdx] = maxTileData;
         this.tiles[maxTileIdx].area = maxTileData.width * maxTileData.height;
-        
+
         return tile;
     }
 
@@ -264,7 +264,7 @@
             if (filter) {
                 instance.$items.removeClass('jtg-hidden');
                 instance.$items.show();
-                instance.$items.not("." + filter).addClass("jtg-hidden").hide();                
+                instance.$items.not("." + filter).addClass("jtg-hidden").hide();
             } else {
                 instance.$items.removeClass('jtg-hidden');
                 instance.$items.show();
@@ -281,7 +281,7 @@
             position: 'relative',
             zIndex: 1
         });
-                        
+
         this.$items.addClass("tile");
 
         if (this.options.width) {
