@@ -18,7 +18,7 @@ h1{ font-size: 48px;
       margin-left: 15px;
       margin-top: 0;  }
 
-.header{  background-image: url(img/bg11.JPG);
+.header{  background-image: url(img/bg9.JPG);
           background-size: cover;;
           max-width: 1200px;
           height: 140px;
@@ -32,9 +32,9 @@ h1{ font-size: 48px;
           margin-left: 0;
           margin-right: 0;
           width: 130px;
-          height: 800px;
+          height: 1600px;
           float: left;
-          background-image: url(img/bg2--.JPG);
+          background-image: url(img/bg11.JPG);
         background-size: cover; }
 
 .sidebar-themes{  font-size: 22px;
@@ -105,6 +105,15 @@ h1{ font-size: 48px;
 
 .btn-fb{  padding-left: 6px;
           padding-right: 7px; }
+
+
+.btn-more a{  color: rgb(124, 124, 124);
+              text-decoration: none;
+              margin-left: 40%;
+              font-size: 20px;
+              font-weight: 600;}
+
+.btn-more a:hover{color: rgb(175, 175, 175)}
 
 .mini-menu {  margin: 0 auto;
               max-width: 220px;
@@ -186,7 +195,14 @@ h1{ font-size: 48px;
   font-size: 20px;
 }
 
-.lg-thumb-item {
-  border-color: green !important;
-}
+
+.lg-thumb-item {border: 1px solid !important;
+border-radius: 0!important;}
+
+
+
+.lg-outer .lg-thumb-item.active {color:rgb(56, 56, 56)!important; }
+.lg-outer .lg-thumb-item:hover{color:rgb(13, 13, 13)!important; }
+
+
 .items{margin-bottom: 3px;}

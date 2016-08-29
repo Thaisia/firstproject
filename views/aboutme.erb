@@ -2,7 +2,7 @@
 <div id="lightgallery">
 
 <% @photos.each do |pic|%>
-  <% if @counter % 10 == 1 and @photos.length - @counter > 4 %>
+  <% if @counter % 20 == 1 and @photos.length - @counter > 9 %>
     <div id="counter-<%=@counter%>" class="ptiles" <% if @counter != 1 %> style="display:none;"<% end %>>
       <div class="items">
   <% end %>
@@ -11,10 +11,10 @@
       <img class="pic" src="/<%=pic['pic_link']%>"> <!-- thumb -->
     </div>
 
-  <% if @counter % 10 == 0 and @photos.length - @counter > 5 %>
+  <% if @counter % 20 == 0 and @photos.length - @counter > 10 %>
       </div>
 
-      <a href="#" onclick="return showPage(this, <%=@counter%>);">next</a>
+      <div class="btn-more"><a href="#" onclick="return showPage(this, <%=@counter%>);">more</a></div>
 
     </div>
   <% end %>
@@ -32,7 +32,7 @@
       });
       */
       $("#counter-1").tilesGallery({
-          height: 800,
+          height: 1600,
           margin: 3,
           enableTwitter: false,
           enableFacebook: false,
@@ -53,11 +53,14 @@
         $(this).attr("src", $(this).data("src"));
       });
       */
-      $(el).parent().next().show();
+      current_page = $(el).parent().parent();
+      next_page = current_page.next();
 
-      $(el).parent().next().find(".items").css("margin-left", -134);
-      $(el).parent().next().first().tilesGallery({
-          height: 1600,
+      next_page.show();
+
+      next_page.find(".items").css("margin-left", -134);
+      next_page.first().tilesGallery({
+          height: 2000,
           width: 1200,
 
           margin: 3,
