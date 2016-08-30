@@ -1,1 +1,7 @@
-<%= @count %>
+<% @photos.each do |pic|%>
+
+    <p>
+      <%=pic['pic_link']%>
+    </p>
+
+<% end %>

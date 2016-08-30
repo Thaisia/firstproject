@@ -36,34 +36,22 @@ get '/aboutme' do
 end
 
 
-
-
-get '/test' do
+get '/test/:url_part' do
   db = get_db
-  @tmp = db.execute "SELECT COUNT(*) FROM pho;"
-  @tmp2 = @tmp[0]
-  @count = @tmp2[0]
+@counter = 1
+#  @theme_id = db.execute 'select id from themes where theme_link=?', params[:url_part]
+#  theme_id = @theme_id[0]['id']
 
-  @num = 20
+#  @photos = db.execute 'select * from pho join themes on pho.theme_id = themes.id where theme_id = ? or themes.parent_id = ? or themes.parent_id in (select id from themes where parent_id=?);',
+#   theme_id, theme_id, theme_id
+@photos = db.execute 'select pic_link from pho;'
+
   if params["ajax"] == "1"
     erb :test, :layout => false
   else
     erb :test
   end
 end
-
-
-get '/test/:pagenum' do
-  db = get_db
-  @page1 = db.execute 'select pic_link from pho limit ?,12;', params[:pagenum]
-
-  if params["ajax"] == "1"
-    erb :test2, :layout => false
-  else
-    erb :test2
-  end
-end
-
 
 get '/tags/:url_part' do
     db = get_db
