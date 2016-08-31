@@ -2,10 +2,6 @@ body{ font-family: 'Assistant', sans-serif;
       background-color: black;
       color: white  }
 
-.page{  max-width: 1200px;
-        margin-left: auto;
-        margin-right: auto; }
-
 h1{ font-size: 48px;
     font-weight: 200;
     margin-top: 8px;
@@ -13,10 +9,16 @@ h1{ font-size: 48px;
     margin-left: 8px;
   line-height: 100%}
 
-.h4{  font-size: 24px;
-      font-weight: 300;
-      margin-left: 15px;
-      margin-top: 0;  }
+h3{ font-size: 24px;
+    font-weight: 300;
+    margin-left: 15px;
+    margin-top: 0}
+
+.page{  max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto; }
+
+
 
 .header{  background-image: url(img/bg9.JPG);
           background-size: cover;;
@@ -25,7 +27,7 @@ h1{ font-size: 48px;
           margin-top: 10px;
           margin-bottom: 3px; }
 
-.header-f{ float: left;  }
+.header-text{ float: left;  }
 
 .sidebar{ position: relative;
           margin-top: 0;
@@ -206,3 +208,18 @@ border-radius: 0!important;}
 
 
 .items{margin-bottom: 3px;}
+.manage{margin: 20px}
+
+.add-themes{display: inline}
+.add-tags{display: inline}
+
+.spoiler-head
+{   margin-top: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.spoiler-body ul
+{ list-style: none;
+}

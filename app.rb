@@ -2,32 +2,35 @@
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
-require "sqlite3"
+require "sinatra/activerecord"
 
-def get_db
-  db = SQLite3::Database.new "test.db"
-  db.results_as_hash = true
-  return db
+set :database, "sqlite3:myphotosite.db"
+
+class Photo < ActiveRecord::Base
+end
+
+class Theme < ActiveRecord::Base
+end
+
+class Tag < ActiveRecord::Base
+end
+
+class Bind < ActiveRecord::Base
 end
 
 before do
-  db = get_db
-  @themes = db.execute 'select * from themes;'
-  @tags = db.execute 'select * from tags'
-  @pho_tags = db.execute 'select pic_link from pho join pho_tags on pho.id = pho_tags.photos_id where tags_id  = 19'
+  @photos = Photo.all
+  @themes = Theme.all
+  @tags = Tag.all
+  @binds = Bind.all
 end
-
 get '/' do
-  db = get_db
-    @photos = db.execute 'select pic_link from pho;'
-    @counter = 1
+  @photos = Photo.all
+  @themes = Theme.all
 	erb :main
 end
 
 get '/aboutme' do
-  db = get_db
-    @photos = db.execute 'select pic_link from pho;'
-@counter = 1
   if params["ajax"] == "1"
     erb :aboutme, :layout => false
   else
@@ -36,15 +39,10 @@ get '/aboutme' do
 end
 
 
-get '/test/:url_part' do
-  db = get_db
-@counter = 1
-#  @theme_id = db.execute 'select id from themes where theme_link=?', params[:url_part]
-#  theme_id = @theme_id[0]['id']
+get '/test' do
 
-#  @photos = db.execute 'select * from pho join themes on pho.theme_id = themes.id where theme_id = ? or themes.parent_id = ? or themes.parent_id in (select id from themes where parent_id=?);',
-#   theme_id, theme_id, theme_id
-@photos = db.execute 'select pic_link from pho;'
+  @photos = Photo.all
+  @themes = Theme.all
 
   if params["ajax"] == "1"
     erb :test, :layout => false
@@ -53,12 +51,7 @@ get '/test/:url_part' do
   end
 end
 
-get '/tags/:url_part' do
-    db = get_db
-    @counter = 1
-    @tags_id = db.execute 'select id from tags where tag_name=?', params[:url_part]
-    tag_id = @tags_id[0]['id']
-    @photos = db.execute 'select pic_link from pho join pho_tags on pho.id = pho_tags.photos_id where tags_id  = ?', tag_id
+get '/tags' do
     if params["ajax"] == "1"
       erb :gallery, :layout => false
     else
@@ -66,18 +59,58 @@ get '/tags/:url_part' do
     end
 end
 
-get '/themes/:url_part' do
-    db = get_db
-@counter = 1
-    @theme_id = db.execute 'select id from themes where theme_link=?', params[:url_part]
-    theme_id = @theme_id[0]['id']
-
-    @photos = db.execute 'select pic_link from pho join themes on pho.theme_id = themes.id where theme_id = ? or themes.parent_id = ? or themes.parent_id in (select id from themes where parent_id=?);',
-     theme_id, theme_id, theme_id
-
+get '/themes' do
+  @photos = Photo.all
+  @themes = Theme.all
     if params["ajax"] == "1"
       erb :gallery, :layout => false
     else
       erb :gallery
     end
+end
+
+
+get '/manage' do
+  erb :manage
+end
+
+
+post '/manage' do
+
+  @theme_name = params[:theme_name]
+  @theme_link = params[:theme_link]
+  @parent_id = params[:theme_id]
+  @tag_name = params[:tag_name]
+
+  t = Theme.new
+  t.theme_name = @theme_name
+  t.theme_link = @theme_link
+  t.parent_id = @parent_id
+  t.save
+
+  tg = Tag.new
+  tg.tag_name = @tag_name
+  tg.save
+
+
+  for f in params['file'] do
+    @filename = f[:filename]
+    file = f[:tempfile]
+
+    File.open("./public/test/#{@filename}", 'wb') do |ff|
+      ff.write(file.read)
+
+    p = Photo.new
+    p.photo_link = @filename
+    p.save
+
+    end
+
+  end
+
+  if params["ajax"] == "1"
+    erb :manage, :layout => false
+  else
+    erb :manage
+  end
 end

@@ -1,11 +1,7 @@
-<div id="ajaxresult"><div class="tiles">
-  <div id="lightgallery" class="items">
-    <% @photos.each do |pic| %>
-    <a href="<%=pic['pic_link']%>">
-      <div id="lightgallery" class="item">
-        <img class="pic" src="<%=pic['pic_link']%>">
-      </div>
-    </a>
-    <% end %>
-  </div>
-</div></div>
+<div id="ajaxresult">
+
+  <% @themes.each do |n|%>
+  <p><%= n.theme_name%></p>
+  <% end %>
+
+</div>

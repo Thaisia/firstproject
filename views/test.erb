@@ -1,7 +1,7 @@
-<% @photos.each do |pic|%>
+<div id="ajaxresult">
 
-    <p>
-      <%=pic['pic_link']%>
-    </p>
+  <% @themes.each do |n|%>
+  <p><%= n.theme_name%></p>
+  <% end %>
 
-<% end %>
+</div>

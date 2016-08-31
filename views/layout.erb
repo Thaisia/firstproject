@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>Taisiya Bo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="/jquery.js"></script>
     <script src="/js/jquery-1.7.1.min.js" type="text/javascript"></script>
     <script src="/js/jquery.tilesgallery.js" type="text/javascript"></script>
@@ -10,133 +12,154 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.2.21/js/lg-thumbnail.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.2.21/js/lightgallery-all.js"></script>
     <script src="https://use.fontawesome.com/886e6e746d.js"></script>
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="Stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.css" rel="stylesheet">
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 
+		<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="Stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.2.21/css/lightgallery.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.2.21/css/lg-transitions.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Assistant:200,300,400,600" rel="stylesheet">
     <link href="/css/jquery-tilesgallery.css" rel="Stylesheet" />
     <link href="/mystyles.css" rel="stylesheet">
-
-
-
-<link href="https://fonts.googleapis.com/css?family=Assistant:200,300,400,600" rel="stylesheet">
-
-
-
   </head>
-<body>
-    <div class="page">
-      <div class="header">
-        <div class="header-f">
-            <a href="/"><span><h1>Taisiya Bo</h1></span>
-            <span class="h4">photoartist</span></a>
+
+  <body>
+
+      <div class="page">
+
+        <div class="header">
+          <div class="header-text">
+              <a href="/"><span><h1>Taisiya Bo</h1></span>
+              <span><h3>photoartist<h3></span></a>
+          </div>
+
+          <div class="buttons">
+            <div class="btn-12">
+              <div class="btn btn-gt"><a href="/"><i class="fa fa-github-alt" aria-hidden="true"></i></a></div>
+              <div class="btn btn-in"><a href="/"><i class="fa fa-instagram" aria-hidden="true"></i></a></div>
+            </div>
+            <div class="btn-34">
+              <div class="btn btn-vk"><a href="/"><i class="fa fa-vk" aria-hidden="true"></i></a></div>
+              <div class="btn btn-fb"><a href="/"><i class="fa fa-facebook" aria-hidden="true"></i></a></div>
+            </div>
+          </div>
         </div>
 
-        <div class="buttons">
-          <div class="btn-12">
-            <div class="btn btn-gt"><a href="/"><i class="fa fa-github-alt" aria-hidden="true"></i></a></div>
-            <div class="btn btn-in"><a href="/"><i class="fa fa-instagram" aria-hidden="true"></i></a></div>
-          </div>
-          <div class="btn-34">
-            <div class="btn btn-vk"><a href="/"><i class="fa fa-vk" aria-hidden="true"></i></a></div>
-            <div class="btn btn-fb"><a href="/"><i class="fa fa-facebook" aria-hidden="true"></i></a></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="sidebar sidebar-pic">
-
-        <div class="mini-menu sidebar-themes">
-          <ul>
-            <% @themes.each do |theme| %>
-              <% if theme['parent_id'] == 0 %>
+        <div class="sidebar sidebar-pic">
+          <div class="mini-menu sidebar-themes">
+            <ul>
                 <li class="sub ajax">
-                  <a href="/themes/<%=theme['theme_link']%>"><%=theme['theme_name']%></a>
-                    <ul>
-                      <% @themes.each do |subtheme| %>
-                        <% if subtheme['parent_id'] == theme['id'] %>
+                    <a href="/themes">Theme</a>
+                      <ul>
                           <li class="sub ajax">
-                            <a href="/themes/<%=subtheme['theme_link']%>"><%=subtheme['theme_name']%></a>
+                            <a href="/themes">Subtheme</a>
                               <ul>
-                                <% @themes.each do |subsubtheme| %>
-                                  <% if subsubtheme['parent_id'] == subtheme['id'] %>
-                                    <li class="ajax sstheme">
-                                      <a href="/themes/<%=subsubtheme['theme_link']%>"><%=subsubtheme['theme_name']%></a>
-                                    </li>
-                                  <% end %>
-                                <% end %>
+                                <li class="ajax sstheme">
+                                  <a href="/themes">Subsub theme</a>
+                                </li>
+                                <li class="ajax sstheme">
+                                  <a href="/themes">Subsub theme</a>
+                                </li>
                               </ul>
                           </li>
-                        <% end %>
-                      <% end %>
-                    </ul>
+                          <li class="sub ajax">
+                            <a href="/themes">Subtheme</a>
+                              <ul>
+                                <li class="ajax sstheme">
+                                  <a href="/themes">Subsub theme</a>
+                                </li>
+                                <li class="ajax sstheme">
+                                  <a href="/themes">Subsub theme</a>
+                                </li>
+                              </ul>
+                          </li>
+                      </ul>
                 </li>
-              <% end %>
-            <% end %>
 
-            <li class="sub ajax"><a href="/aboutme">About me</a></li>
-            <li class="sub ajax"><a href="/test/places">Test</a></li>
+                <li class="sub ajax">
+                    <a href="/themes">Theme2</a>
+                      <ul>
+                          <li class="sub ajax">
+                            <a href="/themes">Subtheme</a>
+                              <ul>
+                                <li class="ajax sstheme">
+                                  <a href="/themes">Subsub theme</a>
+                                </li>
+                              </ul>
+                          </li>
+                          <li class="sub ajax">
+                            <a href="/themes">Subtheme</a>
+                          </li>
+                      </ul>
+                </li>
+              <li class="sub ajax"><a href="/aboutme">About me</a></li>
+              <li class="sub ajax"><a href="/test">Test</a></li>
+              <li class="sub ajax"><a href="/test">More test</a></li>
+              <li class="sub ajax"><a href="/manage">Manage</a></li>
+            </ul>
+          </div>
+
+
+
+          <ul class="sidebar-tags">
+
+                <li class="ajax"><a href="/tags">#tag1</a></li>
+                <li class="ajax"><a href="/tags">#tag2</a></li>
+                <li class="ajax"><a href="/tags">#tag3</a></li>
+                <li class="ajax"><a href="/tags">#tag4</a></li>
+                <li class="ajax"><a href="/tags">#tag5</a></li>
+                <li class="ajax"><a href="/tags">#tag6</a></li>
+                <li class="ajax"><a href="/tags">#tag7</a></li>
+                <li class="ajax"><a href="/tags">#tag8</a></li>
+
           </ul>
+
+          </div>
+
+        <div class="gallery-container content">
+              <%if @error && @error.length > 0 then %>
+                  <div><%=@error%></div>
+              <% end %>
+              <%= yield %>
         </div>
 
-
-
-        <ul class="sidebar-tags">
-            <% @tags.each do |tag|%>
-              <li class="ajax"><a href="/tags/<%= tag['tag_name']%>">#<%= tag['tag_name']%></a></li>
-            <% end%>
-        </ul>
-
-        </div>
+        <p style="clear:both;"></p>
 
 
 
+        <script src="/vendor/jquery-1.9.1.min.js"></script>
 
-
-
-      <div class="gallery-container content">
-            <%if @error && @error.length > 0 then %>
-                <div><%=@error%></div>
-            <% end %>
-            <%= yield %>
-        </div>
-        <p style="clear:both;">
-        </p>
+        <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 
         <script type="text/javascript">
-        $(document).ready(function () {
-          $('.sub > a').click(function(){
-            clicked = $(this);
-            $('.sub ul').each(function() {
-              if (!($(this).is(clicked.closest("ul")))) {
-                $(this).slideUp();
-              }
+            $(document).ready(function () {
+              $('.sub > a').click(function(){
+                clicked = $(this);
+                $('.sub ul').each(function() {
+                  if (!($(this).is(clicked.closest("ul")))) {
+                    $(this).slideUp();
+                  }
+                });
+
+                if ($(this).next().is(":visible")){
+                  $(this).next().slideUp();
+                } else {
+                  $(this).next().slideToggle();
+                }
+                return false;
+              });
+
+            $('.mini-menu > ul > li > a').click(function(){
+              $('.mini-menu > ul > li > a, .sub a').removeClass('active');
+              $(this).addClass('active');
             });
 
-            if ($(this).next().is(":visible")){
-              $(this).next().slideUp();
-            } else {
-              $(this).next().slideToggle();
-            }
-            return false;
+            $('.sub ul li a').click(function(){
+              $('.sub ul li a').removeClass('active');
+              $(this).addClass('active');
+            });
           });
-
-          $('.mini-menu > ul > li > a').click(function(){
-            $('.mini-menu > ul > li > a, .sub a').removeClass('active');
-            $(this).addClass('active');
-          });
-
-          $('.sub ul li a').click(function(){
-            $('.sub ul li a').removeClass('active');
-            $(this).addClass('active');
-          });
-        });
         </script>
-
-
-
-
 
 
         <script>
@@ -175,18 +198,14 @@
         </script>
 
 
-
         <script>
             $('#lightgallery').lightGallery({
                 mode: 'lg-fade',
                 mousewheel: true, //??? not working
-        actualSize: false,
+                actualSize: false,
                 download: false
             });
         </script>
-
-
-
 
 
         <script>
@@ -202,6 +221,7 @@
             });
         </script>
 
+
         <script type="text/javascript">
 
             $(document).ready(function() {
@@ -209,5 +229,9 @@
             });
         </script>
 
-</body>
+
+      </div>
+
+  </body>
+
 </html>
