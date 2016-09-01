@@ -1,0 +1,35 @@
+id,theme_name,parent_id,theme_link
+1,Persons,0,faces
+2,Places,0,places
+3,Events,0,events
+4,Close up,0,closeup
+6,Kids,1,kids
+7,Gentlemen,1,gentlemen
+8,Ladies,1,ladies
+9,Group portrait,1,groupportrait
+10,Nature,2,nature
+11,Countries,2,countries
+12,Night,2,night
+13,Public events,3,publicevents
+14,Social dancing,3,socialdancing
+15,Sport,3,sport
+16,Concerts,3,conserts
+17,Flora,4,flora
+18,Fauna,4,fauna
+19,Things,4,things
+20,Casual,8,casual
+21,Sensual,8,sensual
+22,Fancy,8,fancy
+23,Family portrait,9,familyportrait
+24,Love story,9,lovestory
+25,Wedding,9,wedding
+26,Russia,10,russia
+27,China,11,china
+28,Italy,11,italy
+29,Spain,11,spain
+30,Turkey,11,turkey
+31,Croatia,11,croatia
+32,Czech,11,czech
+33,Slovenia,11,slovenia
+34,So many roads,11,somanyroads
+36,Every day,3,everyday

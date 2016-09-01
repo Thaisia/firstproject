@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20160830211248) do
     t.text     "theme_link"
     t.integer  "parent_id"
     t.text     "theme_name"
+    t.integer  "container"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

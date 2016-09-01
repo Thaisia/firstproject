@@ -25,8 +25,6 @@ before do
   @binds = Bind.all
 end
 get '/' do
-  @photos = Photo.all
-  @themes = Theme.all
 	erb :main
 end
 
@@ -40,10 +38,6 @@ end
 
 
 get '/test' do
-
-  @photos = Photo.all
-  @themes = Theme.all
-
   if params["ajax"] == "1"
     erb :test, :layout => false
   else
@@ -60,8 +54,6 @@ get '/tags' do
 end
 
 get '/themes' do
-  @photos = Photo.all
-  @themes = Theme.all
     if params["ajax"] == "1"
       erb :gallery, :layout => false
     else
@@ -71,9 +63,39 @@ end
 
 
 get '/manage' do
-  erb :manage
+  if params["ajax"] == "1"
+    erb :manage, :layout => false
+  else
+    erb :manage
+  end
 end
 
+post '/edit_photo' do
+  @theme_id = params[:theme_id]
+  @photo_id = params[:photo_id]
+  @tag_id = params[:tag_id]
+
+  photo = Photo.find(@photo_id)
+  photo.theme_id = @theme_id
+  photo.save
+
+  redirect '/manage'
+end
+
+post '/edit_tags' do
+  @photo_id = params[:photo_id]
+  @tag_id = params[:tag_id]
+  puts @tag_id
+
+  for tid in @tag_id do
+    b = Bind.new
+    b.photo_id = @photo_id
+    b.tag_id = tid[0].to_i
+    b.save
+  end
+
+    erb "ok"
+end
 
 post '/manage' do
 
@@ -81,23 +103,28 @@ post '/manage' do
   @theme_link = params[:theme_link]
   @parent_id = params[:theme_id]
   @tag_name = params[:tag_name]
+  @theme_id = params[:theme_id]
+  @photo_id = params[:photo_id]
 
-  t = Theme.new
-  t.theme_name = @theme_name
-  t.theme_link = @theme_link
-  t.parent_id = @parent_id
-  t.save
 
-  tg = Tag.new
-  tg.tag_name = @tag_name
-  tg.save
+
+#  t = Theme.new
+#  t.theme_name = @theme_name
+#  t.theme_link = @theme_link
+#  t.parent_id = @parent_id
+#  t.save
+
+#  tg = Tag.new
+#  tg.tag_name = @tag_name
+#  tg.save
+
 
 
   for f in params['file'] do
     @filename = f[:filename]
     file = f[:tempfile]
 
-    File.open("./public/test/#{@filename}", 'wb') do |ff|
+    File.open("./public/content/#{@filename}", 'wb') do |ff|
       ff.write(file.read)
 
     p = Photo.new
@@ -107,6 +134,10 @@ post '/manage' do
     end
 
   end
+
+  @photo_tmp_id = 0
+
+
 
   if params["ajax"] == "1"
     erb :manage, :layout => false

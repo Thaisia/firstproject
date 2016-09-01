@@ -1,71 +1,80 @@
 
-<div id="ajaxresult" class="manage">
+<div id="ajaxresult">
 
-  <div class="add-themes">
-    <h4>Add themes</h4>
-    <form action="/manage" method="post" class="form-inline">
-      <div class="form-group">
-        <input type="text" name="theme_name" class="form-control" placeholder="theme name" value="<%= @theme_name%>">
-      </div>
-      <div class="form-group">
-        <input type="text" name="theme_link" class="form-control" placeholder="theme link" value="<%= @theme_link%>">
+  <div class="manage-bg">
+
+
+    <div class="manage">
+
+
+
+      <div class="add-photo">
+        <span class="manage-headers">Add photo</span>
+        <form action="/manage" class="form-inline" method="POST" enctype="multipart/form-data">
+                <input type="file" class="form-control" name="file[]" multiple>
+                <input type="submit" class="form-control" value="Upload image">
+        </form>
       </div>
 
-      <div class="form-group" name="theme_name">
-        <label>parent theme:</label>
-        <select class="form-control" name="theme_id">
-          <% @themes.each do |th|%>
-          <option value="<%= th['id']%>" <%= @parent_id == th['id'] ? 'selected' : ''%>><%= th['theme_name']%></option>
-          <%end%>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-default btn-lg">add</button>
-    </form>
 
-    <div class="spoiler-head">Display themes</div>
-    <div class="spoiler-body">
-      <ul><% @themes.each do |th|%>
-        <li><%=th['theme_name']%></li>
-        <% end %>
-      </ul>
     </div>
+
+    <table class="table table-bordered table-photos">
+
+      <% @photos.each do |pho|%>
+
+      <tr>
+        <td class="td-pho"><img src="/content/<%= pho['photo_link']%>" width="120px"/><a name="<%=pho['id']%>"></a></td>
+
+        <td class="td-the">
+          <div class="add-themes">
+            <span class="manage-headers"><%= pho['theme_id']%></span>
+
+
+            <form action="/edit_photo" method="post" class="form-inline">
+              <div class="form-group" name="theme_name">
+
+                <select class="form-control" name="theme_id">
+                  <% @themes.each do |th|%>
+                  <option value="<%= th['id']%>" <%= @theme_id == th['id'] ? 'selected' : ''%>><%= th['theme_name']%></option>
+                  <%end%>
+                </select>
+              </div>
+              <input type="hidden" name="photo_id" value="<%= pho['id'] %>" />
+              <button type="submit" class="btn btn-default btn-lg">add</button>
+            </form>
+
+
+          </div>
+        </td>
+        <td class="td-ta">
+            <form action="/edit_tags" method="post" class="form-inline edit_tags">
+          <% @tags.each do |ta|%>
+          <label><input type="checkbox" name="tag_id[<%= ta['id'] %>]" value="<%= ta['id'] %>"/><%= ta['tag_name']%>  </label>
+
+          <% end%>
+          <input type="hidden" name="photo_id" value="<%= pho['id'] %>" />
+          <button type="submit" class="btn btn-default btn-lg">add</button>
+        </form>
+          </td>
+
+      </tr>
+      <% end %>
+    </table>
+
   </div>
-  <hr>
-
-  <div class="add-tags">
-    <h4>Add tags</h4>
-    <form action="/manage" method="post" class="form-inline">
-      <div class="form-group">
-        <input type="text" name="tag_name" class="form-control" placeholder="tag name" value="<%= @tag_name%>">
-      </div>
-      <button type="submit" class="btn btn-default btn-lg">add</button>
-    </form>
-
-    <div class="spoiler-head">Display tags</div>
-    <div class="spoiler-body">
-      <ul><% @tags.each do |tg|%>
-            <li><%= tg['tag_name']%></li>
-          <% end %>
-      </ul>
-    </div>
-  </div>
-  <hr>
-
-  <div class="add-photo">
-    <h4>Add photo</h4>
-    <form action="/manage" method="POST" enctype="multipart/form-data">
-            <input type="file" name="file[]" multiple>
-            <input type="submit" value="Upload image">
-</form>
-  </div>
-  <hr>
-
 </div>
 
-<script>$(function() {
-    $('.spoiler-body').hide();
-    $('.spoiler-head').click(function(){
-        $(this).next().toggle();
-    })
+
+<script>
+$(".edit_tags").each( function() {
+  $(this).submit(function () {
+    $.ajax({
+      type: $(this).attr('method'),
+      url: $(this).attr('action'),
+      data: $(this).serialize()
     });
+    return false;
+  });
+});
 </script>

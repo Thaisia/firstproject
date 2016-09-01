@@ -21,7 +21,7 @@ h3{ font-size: 24px;
 
 
 .header{  background-image: url(img/bg9.JPG);
-          background-size: cover;;
+          background-size: cover;
           max-width: 1200px;
           height: 140px;
           margin-top: 10px;
@@ -59,8 +59,9 @@ h3{ font-size: 24px;
 }
 
 
-.content{ margin-left: 133px;
-          color: white }
+.content{ margin-left: 3px;
+          color: white;
+          float: left; }
 
 
 .header a,
@@ -174,7 +175,7 @@ h3{ font-size: 24px;
 
 .sstheme a{ padding-left: 2.8em !important;}
 
-.hover{
+/*.hover{
   position: absolute;
   top: 0;
   left: 0;
@@ -195,7 +196,7 @@ h3{ font-size: 24px;
   vertical-align: middle;
   color: #fff;
   font-size: 20px;
-}
+}*/
 
 
 .lg-thumb-item {border: 1px solid !important;
@@ -208,10 +209,21 @@ border-radius: 0!important;}
 
 
 .items{margin-bottom: 3px;}
-.manage{margin: 20px}
 
-.add-themes{display: inline}
-.add-tags{display: inline}
+.manage-bg{background-color: white;
+color: black;
+height: 1600px}
+.manage{margin-left:  20px}
+.manage-headers{font-size: 20px}
+
+
+.table-photos{margin-top: 10px;
+width: 1067px;
+background-color: white;}
+
+.td-pho{padding: 0!important;
+  width: 100px;}
+.td-the{width: 270px;}
 
 .spoiler-head
 {   margin-top: 8px;

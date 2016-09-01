@@ -5,10 +5,22 @@ class CreateTags < ActiveRecord::Migration
       t.timestamps
     end
 
-    Tag.create :tag_name => 'canon'
-    Tag.create :tag_name => 'sony'
-    Tag.create :tag_name => 'parrots'
-    Tag.create :tag_name => 'bokeh'
+    Tag.create :tag_name => 'birds'
     Tag.create :tag_name => 'blackandwhite'
+    Tag.create :tag_name => 'bokeh'
+    Tag.create :tag_name => 'canon'
+    Tag.create :tag_name => 'canon85_12'
+    Tag.create :tag_name => 'landscape'
+    Tag.create :tag_name => 'lingerie'
+    Tag.create :tag_name => 'm42'
+    Tag.create :tag_name => 'macro'
+    Tag.create :tag_name => 'nude'
+    Tag.create :tag_name => 'parrots'
+    Tag.create :tag_name => 'sigma12-24'
+    Tag.create :tag_name => 'sonynex6'
+    Tag.create :tag_name => 'sea'
+    Tag.create :tag_name => 'eyeslosed'
+    Tag.create :tag_name => 'faces'
+    Tag.create :tag_name => 'cats'
   end
 end

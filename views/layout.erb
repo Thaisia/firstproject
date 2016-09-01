@@ -103,27 +103,22 @@
 
           <ul class="sidebar-tags">
 
-                <li class="ajax"><a href="/tags">#tag1</a></li>
-                <li class="ajax"><a href="/tags">#tag2</a></li>
-                <li class="ajax"><a href="/tags">#tag3</a></li>
-                <li class="ajax"><a href="/tags">#tag4</a></li>
-                <li class="ajax"><a href="/tags">#tag5</a></li>
-                <li class="ajax"><a href="/tags">#tag6</a></li>
-                <li class="ajax"><a href="/tags">#tag7</a></li>
-                <li class="ajax"><a href="/tags">#tag8</a></li>
+            <% @tags.each do |tag|%>
+              <li><a href="#">#<%= tag['tag_name']%></a></li>
+            <% end %>
 
           </ul>
 
           </div>
 
-        <div class="gallery-container content">
+        <div class="content">
               <%if @error && @error.length > 0 then %>
                   <div><%=@error%></div>
               <% end %>
               <%= yield %>
         </div>
-
         <p style="clear:both;"></p>
+
 
 
 
