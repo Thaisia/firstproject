@@ -1,7 +1,5 @@
 <div id="ajaxresult">
-
-  <% @themes.each do |n|%>
-  <p><%= n.theme_name%></p>
+  <% @photos.each do |n|%>
+  <p><img src="/content/<%=n.photo_link%>" width="100px"/></p>
   <% end %>
-
 </div>

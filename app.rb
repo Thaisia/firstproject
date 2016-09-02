@@ -25,7 +25,7 @@ before do
   @binds = Bind.all
 end
 get '/' do
-	erb :main
+  erb :main
 end
 
 get '/aboutme' do
@@ -45,7 +45,22 @@ get '/test' do
   end
 end
 
-get '/tags' do
+get '/tag/:tag_name' do
+#select pic_link from pho join pho_tags on pho.id = pho_tags.photos_id where tags_id  = ?', tag_id
+#Author.joins("INNER JOIN posts ON posts.author_id = author.id AND posts.published = 't'")
+
+#Это приведет к следующему SQL:
+#SELECT clients.* FROM clients INNER JOIN posts ON posts.author_id = author.id AND posts.published = 't'
+tag = Tag.find_by tag_name: params[:tag_name]
+puts tag
+puts '***************************************************************'
+
+@tmp_id = Photo.joins("inner join binds on binds.photo_id = photos.id").where("tag_id = ?", tag.id )
+puts @tmp_id
+puts '***************************************************************'
+#@photos_tags = Photo.find
+
+
     if params["ajax"] == "1"
       erb :gallery, :layout => false
     else
@@ -53,7 +68,7 @@ get '/tags' do
     end
 end
 
-get '/themes' do
+get '/themes/:url' do
     if params["ajax"] == "1"
       erb :gallery, :layout => false
     else
@@ -106,8 +121,6 @@ post '/manage' do
   @theme_id = params[:theme_id]
   @photo_id = params[:photo_id]
 
-
-
 #  t = Theme.new
 #  t.theme_name = @theme_name
 #  t.theme_link = @theme_link
@@ -117,8 +130,6 @@ post '/manage' do
 #  tg = Tag.new
 #  tg.tag_name = @tag_name
 #  tg.save
-
-
 
   for f in params['file'] do
     @filename = f[:filename]
@@ -136,8 +147,6 @@ post '/manage' do
   end
 
   @photo_tmp_id = 0
-
-
 
   if params["ajax"] == "1"
     erb :manage, :layout => false

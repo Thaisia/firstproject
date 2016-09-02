@@ -48,53 +48,33 @@
         <div class="sidebar sidebar-pic">
           <div class="mini-menu sidebar-themes">
             <ul>
-                <li class="sub ajax">
-                    <a href="/themes">Theme</a>
+              <% @themes.each do |theme| %>
+                <% if theme['parent_id'] == 0 %>
+                  <li class="sub ajax">
+                    <a href="/themes/<%=theme['theme_link']%>"><%=theme['theme_name']%></a>
                       <ul>
-                          <li class="sub ajax">
-                            <a href="/themes">Subtheme</a>
-                              <ul>
-                                <li class="ajax sstheme">
-                                  <a href="/themes">Subsub theme</a>
-                                </li>
-                                <li class="ajax sstheme">
-                                  <a href="/themes">Subsub theme</a>
-                                </li>
-                              </ul>
-                          </li>
-                          <li class="sub ajax">
-                            <a href="/themes">Subtheme</a>
-                              <ul>
-                                <li class="ajax sstheme">
-                                  <a href="/themes">Subsub theme</a>
-                                </li>
-                                <li class="ajax sstheme">
-                                  <a href="/themes">Subsub theme</a>
-                                </li>
-                              </ul>
-                          </li>
+                        <% @themes.each do |subtheme| %>
+                          <% if subtheme['parent_id'] == theme['id'] %>
+                            <li class="sub ajax">
+                              <a href="/themes/<%=subtheme['theme_link']%>"><%=subtheme['theme_name']%></a>
+                                <ul>
+                                  <% @themes.each do |subsubtheme| %>
+                                    <% if subsubtheme['parent_id'] == subtheme['id'] %>
+                                      <li class="ajax sstheme">
+                                        <a href="/themes/<%=subsubtheme['theme_link']%>"><%=subsubtheme['theme_name']%></a>
+                                      </li>
+                                    <% end %>
+                                  <% end %>
+                                </ul>
+                            </li>
+                          <% end %>
+                        <% end %>
                       </ul>
-                </li>
-
-                <li class="sub ajax">
-                    <a href="/themes">Theme2</a>
-                      <ul>
-                          <li class="sub ajax">
-                            <a href="/themes">Subtheme</a>
-                              <ul>
-                                <li class="ajax sstheme">
-                                  <a href="/themes">Subsub theme</a>
-                                </li>
-                              </ul>
-                          </li>
-                          <li class="sub ajax">
-                            <a href="/themes">Subtheme</a>
-                          </li>
-                      </ul>
-                </li>
+                  </li>
+                <% end %>
+              <% end %>
               <li class="sub ajax"><a href="/aboutme">About me</a></li>
               <li class="sub ajax"><a href="/test">Test</a></li>
-              <li class="sub ajax"><a href="/test">More test</a></li>
               <li class="sub ajax"><a href="/manage">Manage</a></li>
             </ul>
           </div>
@@ -104,7 +84,7 @@
           <ul class="sidebar-tags">
 
             <% @tags.each do |tag|%>
-              <li><a href="#">#<%= tag['tag_name']%></a></li>
+              <li class="ajax"><a href="/tag/<%= tag['tag_name']%>">#<%= tag['tag_name']%></a></li>
             <% end %>
 
           </ul>
