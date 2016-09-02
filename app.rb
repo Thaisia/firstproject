@@ -46,20 +46,9 @@ get '/test' do
 end
 
 get '/tag/:tag_name' do
-#select pic_link from pho join pho_tags on pho.id = pho_tags.photos_id where tags_id  = ?', tag_id
-#Author.joins("INNER JOIN posts ON posts.author_id = author.id AND posts.published = 't'")
 
-#Это приведет к следующему SQL:
-#SELECT clients.* FROM clients INNER JOIN posts ON posts.author_id = author.id AND posts.published = 't'
 tag = Tag.find_by tag_name: params[:tag_name]
-puts tag
-puts '***************************************************************'
-
-@tmp_id = Photo.joins("inner join binds on binds.photo_id = photos.id").where("tag_id = ?", tag.id )
-puts @tmp_id
-puts '***************************************************************'
-#@photos_tags = Photo.find
-
+@photos_load = Photo.joins("inner join binds on binds.photo_id = photos.id").where("tag_id = ?", tag.id )
 
     if params["ajax"] == "1"
       erb :gallery, :layout => false
@@ -68,7 +57,20 @@ puts '***************************************************************'
     end
 end
 
-get '/themes/:url' do
+
+get '/themes/:theme_link' do
+
+  theme = Theme.find_by theme_link: params[:theme_link]
+  puts theme.id
+
+
+#select pic_link from pho join themes on pho.theme_id = themes.id where theme_id = ? or themes.parent_id = ? or themes.parent_id in (select id from themes where parent_id=?);', theme_id, theme_id, theme_id
+#@photos_load = Photo.joins("inner join themes on binds.photo_id = photos.id").where("tag_id = ?", tag.id )
+
+
+test1 = Theme.where("id = ?", theme.id)
+puts test1
+  puts "*-***************************************************************************"
     if params["ajax"] == "1"
       erb :gallery, :layout => false
     else
