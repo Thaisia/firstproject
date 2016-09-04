@@ -61,16 +61,19 @@ end
 get '/themes/:theme_link' do
 
   theme = Theme.find_by theme_link: params[:theme_link]
-  puts theme.id
 
+test2 = Theme.select("id").where(parent_id: theme.id)
+#puts test2
 
-#select pic_link from pho join themes on pho.theme_id = themes.id where theme_id = ? or themes.parent_id = ? or themes.parent_id in (select id from themes where parent_id=?);', theme_id, theme_id, theme_id
-#@photos_load = Photo.joins("inner join themes on binds.photo_id = photos.id").where("tag_id = ?", tag.id )
+test1 = Theme.select('id').where("id = ? or parent_id = ? or parent_id in (?)", theme.id, theme.id, test2)
 
+@photos_load = Photo.where('theme_id in (?)', test1)
 
-test1 = Theme.where("id = ?", theme.id)
-puts test1
-  puts "*-***************************************************************************"
+#@photos_load.each do |t|
+#   puts t['photo_link']
+#end
+#  puts "*-***************************************************************************"
+
     if params["ajax"] == "1"
       erb :gallery, :layout => false
     else

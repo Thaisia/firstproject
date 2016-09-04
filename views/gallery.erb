@@ -1,4 +1,8 @@
 
 <div id="ajaxresult">
-ololo
+
+<% @photos_load.each do |photo|%>
+  <img src="/content/<%= photo['photo_link']%>" width="100px">
+<% end%>
+
 </div>
