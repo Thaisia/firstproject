@@ -18,7 +18,7 @@ end
 class Bind < ActiveRecord::Base
 end
 
-LIMIT = 20
+LIMIT = 30
 
 before do
   @themes = Theme.all
@@ -51,6 +51,7 @@ get '/' do
 end
 
 get '/aboutme' do
+
   if params["ajax"] == "1"
     erb :aboutme, :layout => false
   else
@@ -200,6 +201,7 @@ post '/manage' do
     p = Photo.new
     p.photo_link = @filename
     p.save
+
 
     end
 
