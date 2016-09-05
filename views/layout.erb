@@ -1,32 +1,26 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     <title>Taisiya Bo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="/jquery.js"></script>
-    <script src="/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
     <script src="/js/jquery.tilesgallery.js" type="text/javascript"></script>
-    <script src="/myscripts.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.2.21/js/lg-fullscreen.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.2.21/js/lg-thumbnail.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.2.21/js/lightgallery-all.js"></script>
     <script src="https://use.fontawesome.com/886e6e746d.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
-
-		<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script type='text/javascript' src='/vendor/unitegallery/js/unitegallery.min.js'></script>
+    <link rel='stylesheet' href='/vendor/unitegallery/css/unite-gallery.css' type='text/css' />
+    <script type='text/javascript' src='/vendor/unitegallery/themes/tiles/ug-theme-tiles.js'></script>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="Stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.2.21/css/lightgallery.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.2.21/css/lg-transitions.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Assistant:200,300,400,600" rel="stylesheet">
     <link href="/css/jquery-tilesgallery.css" rel="Stylesheet" />
     <link href="/mystyles.css" rel="stylesheet">
+    <script>
+      var lg_all_photos = [];
+    </script>
   </head>
-
   <body>
-
       <div class="page">
-
         <div class="header">
           <div class="header-text">
               <a href="/"><span><h1>Taisiya Bo</h1></span>
@@ -79,8 +73,6 @@
             </ul>
           </div>
 
-
-
           <ul class="sidebar-tags">
 
             <% @tags.each do |tag|%>
@@ -91,7 +83,7 @@
 
           </div>
 
-        <div class="content">
+        <div class="content" id="content">
               <%if @error && @error.length > 0 then %>
                   <div><%=@error%></div>
               <% end %>
@@ -100,62 +92,87 @@
         <p style="clear:both;"></p>
 
 
-
-
-        <script src="/vendor/jquery-1.9.1.min.js"></script>
-
         <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-        <script type="text/javascript">
-            $(document).ready(function () {
-              $('.sub > a').click(function(){
-                clicked = $(this);
-                $('.sub ul').each(function() {
-                  if (!($(this).is(clicked.closest("ul")))) {
-                    $(this).slideUp();
-                  }
-                });
-
-                if ($(this).next().is(":visible")){
-                  $(this).next().slideUp();
-                } else {
-                  $(this).next().slideToggle();
-                }
-                return false;
-              });
-
-            $('.mini-menu > ul > li > a').click(function(){
-              $('.mini-menu > ul > li > a, .sub a').removeClass('active');
-              $(this).addClass('active');
-            });
-
-            $('.sub ul li a').click(function(){
-              $('.sub ul li a').removeClass('active');
-              $(this).addClass('active');
-            });
-          });
-        </script>
+        <script src="/js/main.js"></script>
 
 
         <script>
-          function sendAjaxRequest(el) {
+          function getMoarAjax(el) {
             $.ajax({
-              url: el.attr("href") + "?ajax=1",
+              url: el.attr("href"),
+              data: {ajax: 1},
               success: function(res) {
-                $("#ajaxresult").html(res); //???
-                window.history.pushState(res, "", el.attr("href"));
-
+                el.remove();
+                gal = $("#gallery");
+                gal.html(gal.html() + $(res).filter("#gallery").html());
+                moar = $("#moar");
+                moar.html($(res).filter("#moar").html());
+                eval($(res).filter("script").text());
                 $(".tiles").tilesGallery({
-                    height: 800,
+                    height: 1600,
                     margin: 3,
                     enableTwitter: true,
                     enableFacebook: true,
-                    enableGplus: true,
+                    enableGplus: false,
                     enablePinterest: true
                 });
 
-                $(".lightgallery").each(function() {$(this).lightGallery();});
+                $(".lg").off();
+                $(".lg").click(function() {
+                  $(this).lightGallery({
+                    dynamic: true,
+                    dynamicEl: lg_all_photos,
+                    mode: 'lg-fade',
+                    mouseWheel: true,
+                    actualSize: false,
+                    download: false,
+                    index: $(this).data("index")
+                  });
+                  return false;
+                });
+                $(".tiles").removeClass("tiles");
+              }
+            });
+            return false;
+          }
 
+          function getGalleryAjax(el) {
+            $.ajax({
+              url: el.attr("href"),
+              data: {ajax: 1},
+              success: function(res) {
+                gal = $("#gallery");
+                gal.html($(res).filter("#gallery").html());
+                moar = $("#moar");
+                moar.html($(res).filter("#moar").html());
+
+                window.history.pushState(res, "", el.attr("href"));
+
+                $(".tiles").tilesGallery({
+                    height: 1600,
+                    margin: 3,
+                    enableTwitter: true,
+                    enableFacebook: true,
+                    enableGplus: false,
+                    enablePinterest: true
+                });
+                eval($(res).filter("script").text());
+                $(".lg").off();
+                $(".lg").click(function() {
+                  $(this).lightGallery({
+                    dynamic: true,
+                    dynamicEl: lg_all_photos,
+                    mode: 'lg-fade',
+                    mouseWheel: true,
+                    actualSize: false,
+                    download: false,
+                    index: $(this).data("index")
+                  });
+                  return false;
+                });
+
+                $(".tiles").removeClass("tiles");
               }
             });
 
@@ -166,47 +183,45 @@
             $('.ajax > a').click(function(){
               $('.ajax > a').removeClass('active');
               $(this).addClass('active');
-              return sendAjaxRequest($(this));
+              return getGalleryAjax($(this));
             });
           });
 
         </script>
 
-
-        <script>
-            $('#lightgallery').lightGallery({
-                mode: 'lg-fade',
-                mousewheel: true, //??? not working
-                actualSize: false,
-                download: false
-            });
-        </script>
-
-
         <script>
             $(function () {
-                $(".tiles").tilesGallery({
-                    height: 800,
-                    margin: 3,
-                    enableTwitter: true,
-                    enableFacebook: true,
-                    enableGplus: true,
-                    enablePinterest: true
+              $(".tiles").tilesGallery({
+                  height: 1600,
+                  margin: 3,
+                  enableTwitter: true,
+                  enableFacebook: true,
+                  enableGplus: false,
+                  enablePinterest: true
+              });
+              $(".lg").off();
+              $(".lg").click(function() {
+                $(this).lightGallery({
+                  dynamic: true,
+                  dynamicEl: lg_all_photos,
+                  mode: 'lg-fade',
+                  mouseWheel: true,
+                  actualSize: false,
+                  download: false,
+                  index: $(this).data("index")
                 });
+                return false;
+              });
+
+              $(".tiles").removeClass("tiles");
             });
         </script>
-
-
-        <script type="text/javascript">
-
-            $(document).ready(function() {
-                $("#lightgallery").lightGallery();
-            });
-        </script>
-
 
       </div>
 
-  </body>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.2.21/js/lightgallery-all.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.2.21/js/lg-fullscreen.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.2.21/js/lg-thumbnail.js"></script>
 
+  </body>
 </html>

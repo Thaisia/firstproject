@@ -7,18 +7,16 @@ h1{ font-size: 48px;
     margin-top: 8px;
     margin-bottom: 0;
     margin-left: 8px;
-  line-height: 100%}
+    line-height: 100% }
 
 h3{ font-size: 24px;
     font-weight: 300;
     margin-left: 15px;
-    margin-top: 0}
+    margin-top: 0 }
 
 .page{  max-width: 1200px;
         margin-left: auto;
         margin-right: auto; }
-
-
 
 .header{  background-image: url(img/bg9.JPG);
           background-size: cover;
@@ -33,14 +31,13 @@ h3{ font-size: 24px;
           margin-top: 0;
           margin-left: 0;
           margin-right: 0;
-          width: 130px;
+          width: 140px;
           height: 1600px;
           float: left;
           background-image: url(img/bg11.JPG);
-        background-size: cover; }
+          background-size: cover; }
 
 .sidebar-themes{  font-size: 22px;
-
                   line-height: 110%;
                   padding-left: 0;  }
 
@@ -54,41 +51,29 @@ h3{ font-size: 24px;
                 line-height: 120%;
                 list-style: none; }
 
-.sidebar-tags a.active {
-  font-weight: bold;
-}
-
-
-.content{ margin-left: 3px;
-          color: white;
-          float: left; }
-
+.sidebar-tags a.active{ font-size: 17px;
+                        font-weight: 500;}
 
 .header a,
 .sidebar a{ color: black;
-                  text-decoration: none;  }
+            text-decoration: none;  }
 
 .buttons a:hover,
 .header a:hover,
 .sidebar a:hover{ color: rgba(0, 0, 0, 0.5);
                   text-decoration: none;  }
 
-
-
 .buttons{   float: right;
-            margin-right: 20px;
-            margin-top: 28px; }
+            margin-right: 15px;
+            margin-top: 17px; }
 
 .buttons a{ color: black;
             text-decoration: none;  }
 
-
-
-
 .btn-12{   display: block; }
 
 .btn-34{  display: block;
-          margin-top: 11px; }
+          margin-top: 10px; }
 
 .btn{   display: inline;
         border-style: solid;
@@ -97,10 +82,7 @@ h3{ font-size: 24px;
         padding-bottom: 3px;
         border-color: rgba(0, 0, 0, 0.7); }
 
-.btn-gt{  padding-left: 4px;
-          padding-right: 4px; }
-
-.btn-in{  padding-left: 4px;
+.btn-gt, .btn-in{  padding-left: 4px;
           padding-right: 4px; }
 
 .btn-vk{  padding-left: 3px;
@@ -109,14 +91,13 @@ h3{ font-size: 24px;
 .btn-fb{  padding-left: 6px;
           padding-right: 7px; }
 
+.btn-more a:hover{color: rgb(175, 175, 175)}
 
-.btn-more a{  color: rgb(124, 124, 124);
+#moar a{  color: rgb(124, 124, 124);
               text-decoration: none;
               margin-left: 40%;
               font-size: 20px;
-              font-weight: 600;}
-
-.btn-more a:hover{color: rgb(175, 175, 175)}
+              font-weight: 600; }
 
 .mini-menu {  margin: 0 auto;
               max-width: 220px;
@@ -134,11 +115,10 @@ h3{ font-size: 24px;
                             text-decoration: none;
                             font-weight: 300;  }
 
-.mini-menu > ul > li > a:hover{color: rgba(0, 0, 0, 0.5)}
+.mini-menu > ul > li > a:hover{ color: rgba(0, 0, 0, 0.5) }
 .mini-menu > ul > li > a.active { color: black;
-                                    font-weight: 400;}
-
-
+                                    font-weight: 500;
+                                    font-size: 23px; }
 
 .mini-menu .sub  ul { display: none;
                       overflow: hidden; }
@@ -149,89 +129,70 @@ h3{ font-size: 24px;
                           font-size: 16px;
                           text-decoration: none;
                           line-height: 80%;
-                        font-weight: 300;  }
+                          font-weight: 300;  }
 
-.mini-menu .sub ul li a:hover{color: rgba(0, 0, 0, 0.5)}
-.mini-menu .sub ul li a.active {color: black; /* ????*/
-                                    font-weight: 400; }
+.mini-menu .sub ul li a:hover{  color: rgba(0, 0, 0, 0.5)}
+.mini-menu .sub ul li a.active{ color: black; /* ????*/
+                                font-weight: 500;
+                                font-size: 18px;  }
 
-.mini-menu .sub ul li a:after{ float: left;
+.mini-menu .sub ul li a:after{  float: left;
                                 margin-right:6px;
                                 line-height: 100%;  }
 
-.mini-menu .sub > a:before {  height:12px;
-                              width:12px;
-                              font-size: 1em;
-                              display:inline-block;
-                              position: absolute;
-                              right: 10px;
-                              top: 12px;
-                              line-height: 100%;
-                              color: red;
-                              text-indent: 0;
-                              text-align: center;
-                              text-shadow:none;
-                              font-weight: 500;}
+.mini-menu .sub > a:before{ height:12px;
+                            width:12px;
+                            font-size: 1em;
+                            display:inline-block;
+                            position: absolute;
+                            right: 10px;
+                            top: 12px;
+                            line-height: 100%;
+                            color: red;
+                            text-indent: 0;
+                            text-align: center;
+                            text-shadow:none;
+                            font-weight: 500; }
 
-.sstheme a{ padding-left: 2.8em !important;}
+.sstheme a{ padding-left: 2.8em !important; }
 
-/*.hover{
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: #000;
-  background-color: rgba(0,0,0,0.7);
-  transition: all .3s;
-  opacity: 0;
-  display: table;
-  width: 100%;
-  height: 100%;
-}
+.lg-thumb-item{ border: 1px solid !important;
+                border-radius: 0!important; }
 
-.icon {
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-  color: #fff;
-  font-size: 20px;
-}*/
+.lg-outer .lg-thumb-item.active{  color:rgb(56, 56, 56)!important; }
+.lg-outer .lg-thumb-item:hover{ color:rgb(13, 13, 13)!important; }
+
+.items{ margin-bottom: 3px; }
+
+.table-photos{  margin-top: 10px;
+                background-color: white;  }
 
 
-.lg-thumb-item {border: 1px solid !important;
-border-radius: 0!important;}
+.table-photos, .table-photos tr, .table-photos td{ border: 1px solid grey;  }
 
+.td-pho{  padding: 0!important;
+          width: 100px; }
 
+.td-the{  width: 240px; }
 
-.lg-outer .lg-thumb-item.active {color:rgb(56, 56, 56)!important; }
-.lg-outer .lg-thumb-item:hover{color:rgb(13, 13, 13)!important; }
+.manage-bg{ background-color: white;
+            color: black;
+            height: 1600px ; }
 
+.manage{    width: 100%;  }
 
-.items{margin-bottom: 3px;}
+.manage-headers{  font-size: 20px; }
 
-.manage-bg{background-color: white;
-color: black;
-height: 1600px}
-.manage{margin-left:  20px}
-.manage-headers{font-size: 20px}
+.add-photo{ margin-left:  20px; }
 
+.spoiler-head{  margin-top: 8px;
+                cursor: pointer;
+                font-size: 16px;
+                font-weight: 500; }
 
-.table-photos{margin-top: 10px;
-width: 1067px;
-background-color: white;}
+.spoiler-body ul{ list-style: none; }
 
-.td-pho{padding: 0!important;
-  width: 100px;}
-.td-the{width: 270px;}
+.content{ margin-left: 143px;
+          color: white; }
 
-.spoiler-head
-{   margin-top: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 500;
-}
-
-.spoiler-body ul
-{ list-style: none;
-}
+.next-page{ margin-left: -143px;}

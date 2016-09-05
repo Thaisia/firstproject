@@ -1,8 +1,36 @@
+<div id="gallery">
 
-<div id="ajaxresult">
+    <div class="tiles<% if @offset != 0 %> next-page<% end %>"><div class="items">
+    <% @photos.each_with_index do |photo, index|%>
+      <div class="item">
+        <a class="lg" data-index="<%= @offset + index %>" href="/content/<%= photo.photo_link %>">
+          <img class="pic" src="/content/<%= photo.photo_link %>">
+        </a>
+      </div>
+    <% end %>
+    </div></div>
+  </div>
 
-<% @photos_load.each do |photo|%>
-  <img src="/content/<%= photo['photo_link']%>" width="100px">
-<% end%>
-
+<div id="moar">
+<% if @more %>
+  <% if @tag %>
+  <a onclick="return getMoarAjax($(this))" href="/tag/<%= @tag.tag_name %>?offset=<%= @new_offset %>">More</a>
+  <% elsif @theme %>
+  <a onclick="return getMoarAjax($(this))" href="/themes/<%= @theme.theme_link %>?offset=<%= @new_offset %>">More</a>
+  <% else %>
+  <a onclick="return getMoarAjax($(this))" href="/?offset=<%= @new_offset %>">More</a>
+  <% end %>
+<% end %>
 </div>
+
+<script>
+  lg_all_photos.length = 0;
+  lg_all_photos = lg_all_photos.concat([
+    <% @all_photos.each_with_index do |photo, index| %>
+      {
+        'src': '/content/<%= photo.photo_link %>',
+        'thumb': '/content/<%= photo.photo_link %>'
+      }<% if index+1 < @all_photos.length %>,<% end %>
+    <% end %>
+  ]);
+</script>
