@@ -15,43 +15,28 @@
       <% @photos.each do |pho|%>
 
       <tr>
-        <td class="td-pho"><img src="/content/<%= pho['photo_link']%>" width="120px"/><a name="<%=pho['id']%>"></a></td>
+        <td class="td-pho"><img src="/content/<%= pho['photo_link']%>" height="150px"/><a name="<%=pho['id']%>"></a></td>
 
-        <td class="td-the">
-          <div class="add-themes">
-            <span class="manage-headers"><%= pho['theme_id']%></span>
+                          <td>
 
+<%=pho['id']%>
+                          </td>
 
-            <form action="/edit_photo" method="post" class="form-inline ajax-form">
-              <div class="form-group" name="theme_name">
-
-
-                <select class="form-control" name="theme_id" >
-                  <% @themes_ddl.each do |th|%>
-                  <option value="<%= th['id']%>" <%= @theme_id == th['id'] ? 'selected' : ''%>><%= th['theme_name']%></option>
-                  <%end%>
-                </select>
-
-
-
-              </div>
-              <input type="hidden" name="photo_id" value="<%= pho['id'] %>" />
-              <button type="submit" class="btn btn-default btn-lg">add</button>
-            </form>
-
-
-          </div>
-        </td>
         <td class="td-ta">
             <form action="/edit_tags" method="post" class="form-inline ajax-form">
           <% @tags.each do |ta|%>
-          <label><input type="checkbox" name="tag_id[<%= ta['id'] %>]" value="<%= ta['id'] %>"/><%= ta['tag_name']%>  </label>
+          <div  class="tags-chbx" ><label><input type="checkbox" name="tag_id[<%= ta['id'] %>]" value="<%= ta['id'] %>"/><%= ta['tag_name']%>  </label></div>
 
           <% end%>
           <input type="hidden" name="photo_id" value="<%= pho['id'] %>" />
           <button type="submit" class="btn btn-default btn-lg">add</button>
         </form>
           </td>
+
+                  <td class="td-the">
+
+
+                  </td>
 
       </tr>
       <% end %>

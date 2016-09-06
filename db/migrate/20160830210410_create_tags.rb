@@ -22,5 +22,13 @@ class CreateTags < ActiveRecord::Migration
     Tag.create :tag_name => 'eyeslosed'
     Tag.create :tag_name => 'faces'
     Tag.create :tag_name => 'cats'
+    Tag.create :tag_name => 'sky'
+    Tag.create :tag_name => 'sunsetsunrize'
+    Tag.create :tag_name => 'woods'
+    Tag.create :tag_name => 'mountains'
+    Tag.create :tag_name => 'streets'
+    Tag.create :tag_name => 'emotions'
+    Tag.create :tag_name => 'waterfalls'
+
   end
 end

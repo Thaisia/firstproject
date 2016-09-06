@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830211248) do
+ActiveRecord::Schema.define(version: 20160905164703) do
 
   create_table "binds", force: :cascade do |t|
     t.integer  "photo_id"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160830211248) do
     t.integer  "theme_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "shuffle_num"
   end
 
   create_table "tags", force: :cascade do |t|

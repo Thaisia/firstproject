@@ -23,10 +23,13 @@ LIMIT = 30
 before do
   @themes = Theme.all
   @tags = Tag.all
+    @photos = Photo.all
 end
 
 get '/' do
-  @all_photos = Photo.all
+
+
+  @all_photos = Photo.order(:shuffle_num)
   offset = params.fetch("offset", 0).to_i
   @photos = @all_photos.offset(offset).limit(LIMIT)
 
@@ -76,7 +79,7 @@ get '/tag/:tag_name' do
     "inner join binds on binds.photo_id = photos.id"
   ).where(
     "tag_id = ?", @tag.id
-  )
+  ).order(:shuffle_num)
   @photos = @all_photos.offset(offset).limit(LIMIT)
 
   all_length = @all_photos.length
@@ -146,6 +149,7 @@ get '/manage' do
 end
 
 post '/edit_photo' do
+  @themes_ddl = Theme.where('container = 1')
   @theme_id = params[:theme_id]
   @photo_id = params[:photo_id]
   @tag_id = params[:tag_id]
@@ -173,7 +177,8 @@ post '/edit_tags' do
 end
 
 post '/manage' do
-
+  @themes_ddl = Theme.where('container = 1')
+  @photos = Photo.all
   @theme_name = params[:theme_name]
   @theme_link = params[:theme_link]
   @parent_id = params[:theme_id]
@@ -200,6 +205,8 @@ post '/manage' do
 
     p = Photo.new
     p.photo_link = @filename
+    p.theme_id = 33
+    p.shuffle_num = rand(111111..999999)
     p.save
 
 

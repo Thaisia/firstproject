@@ -196,3 +196,7 @@ h3{ font-size: 24px;
           color: white; }
 
 .next-page{ margin-left: -143px;}
+
+.tags-chbx{ font-size: 18px;
+            font-weight: 500;
+            display: flex;}
