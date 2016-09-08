@@ -21,35 +21,34 @@ end
 LIMIT = 30
 
 before do
-  @themes = Theme.all
-  @tags = Tag.all
+    @themes = Theme.all
+    @tags = Tag.all
     @photos = Photo.all
 end
 
 get '/' do
 
+    @all_photos = Photo.order(:shuffle_num)
+    offset = params.fetch("offset", 0).to_i
+    @photos = @all_photos.offset(offset).limit(LIMIT)
 
-  @all_photos = Photo.order(:shuffle_num)
-  offset = params.fetch("offset", 0).to_i
-  @photos = @all_photos.offset(offset).limit(LIMIT)
+    all_length = @all_photos.length
+    remaining_length = all_length - (offset + @photos.length)
+    if remaining_length < LIMIT / 2
+      @photos = @all_photos.offset(offset)
+      @more = false
+    else
+      @more = true
+    end
 
-  all_length = @all_photos.length
-  remaining_length = all_length - (offset + @photos.length)
-  if remaining_length < LIMIT / 2
-    @photos = @all_photos.offset(offset)
-    @more = false
-  else
-    @more = true
-  end
+    @offset = offset
+    @new_offset = offset + @photos.length
 
-  @offset = offset
-  @new_offset = offset + @photos.length
-
-  if params["ajax"] == "1"
-    erb :gallery, :layout => false
-  else
-    erb :gallery
-  end
+    if params["ajax"] == "1"
+      erb :gallery, :layout => false
+    else
+      erb :gallery
+    end
 
 end
 
@@ -60,84 +59,78 @@ get '/aboutme' do
   else
     erb :aboutme
   end
-end
 
-
-get '/test' do
-  if params["ajax"] == "1"
-    erb :test, :layout => false
-  else
-    erb :test
-  end
 end
 
 get '/tag/:tag_name' do
-  offset = params.fetch("offset", 0).to_i
 
-  @tag = Tag.find_by tag_name: params[:tag_name]
-  @all_photos = Photo.joins(
-    "inner join binds on binds.photo_id = photos.id"
-  ).where(
-    "tag_id = ?", @tag.id
-  ).order(:shuffle_num)
-  @photos = @all_photos.offset(offset).limit(LIMIT)
+    offset = params.fetch("offset", 0).to_i
 
-  all_length = @all_photos.length
-  remaining_length = all_length - (offset + @photos.length)
-  if remaining_length < LIMIT / 2
-    @photos = @all_photos.offset(offset)
-    @more = false
-  else
-    @more = true
-  end
+    @tag = Tag.find_by tag_name: params[:tag_name]
+    @all_photos = Photo.joins(
+      "inner join binds on binds.photo_id = photos.id"
+    ).where(
+      "tag_id = ?", @tag.id
+    ).order(:shuffle_num)
+    @photos = @all_photos.offset(offset).limit(LIMIT)
 
-  @offset = offset
-  @new_offset = offset + @photos.length
+    all_length = @all_photos.length
+    remaining_length = all_length - (offset + @photos.length)
+    if remaining_length < LIMIT / 2
+      @photos = @all_photos.offset(offset)
+      @more = false
+    else
+      @more = true
+    end
 
+    @offset = offset
+    @new_offset = offset + @photos.length
 
-  if params["ajax"] == "1"
-    erb :gallery, :layout => false
-  else
-    erb :gallery
-  end
+    if params["ajax"] == "1"
+      erb :gallery, :layout => false
+    else
+      erb :gallery
+    end
+
 end
-
 
 get '/themes/:theme_link' do
-  offset = params.fetch("offset", 0).to_i
 
-  @theme = Theme.find_by theme_link: params[:theme_link]
-  subthemes = Theme.select("id").where(parent_id: @theme.id)
-  themes = Theme.select('id').where(
-    "id = ? or parent_id = ? or parent_id in (?)",
-    @theme.id, @theme.id, subthemes
-  )
+    offset = params.fetch("offset", 0).to_i
 
-  @all_photos = Photo.where('theme_id in (?)', themes)
-  @photos = @all_photos.offset(offset).limit(LIMIT)
+    @theme = Theme.find_by theme_link: params[:theme_link]
+    subthemes = Theme.select("id").where(parent_id: @theme.id)
+    themes = Theme.select('id').where(
+      "id = ? or parent_id = ? or parent_id in (?)",
+      @theme.id, @theme.id, subthemes
+    )
 
-  all_length = @all_photos.length
-  remaining_length = all_length - (offset + @photos.length)
-  if remaining_length < LIMIT / 2
-    @photos = @all_photos.offset(offset)
-    @more = false
-  else
-    @more = true
-  end
+    @all_photos = Photo.where('theme_id in (?)', themes)
+    @photos = @all_photos.offset(offset).limit(LIMIT)
 
-  @offset = offset
-  @new_offset = offset + @photos.length
+    all_length = @all_photos.length
+    remaining_length = all_length - (offset + @photos.length)
+    if remaining_length < LIMIT / 2
+      @photos = @all_photos.offset(offset)
+      @more = false
+    else
+      @more = true
+    end
+
+    @offset = offset
+    @new_offset = offset + @photos.length
 
 
-  if params["ajax"] == "1"
-    erb :gallery, :layout => false
-  else
-    erb :gallery
-  end
+    if params["ajax"] == "1"
+      erb :gallery, :layout => false
+    else
+      erb :gallery
+    end
+
 end
 
-
 get '/manage' do
+=begin
   @themes_ddl = Theme.where('container = 1')
   @photos = Photo.all
 
@@ -146,9 +139,12 @@ get '/manage' do
   else
     erb :manage
   end
+=end
+  erb "Дратути =)"
 end
 
 post '/edit_photo' do
+=begin
   @themes_ddl = Theme.where('container = 1')
   @theme_id = params[:theme_id]
   @photo_id = params[:photo_id]
@@ -159,9 +155,12 @@ post '/edit_photo' do
   photo.save
 
   redirect '/manage'
+=end
+  erb "Дратути =)"
 end
 
 post '/edit_tags' do
+=begin
   @photo_id = params[:photo_id]
   @tag_id = params[:tag_id]
   puts @tag_id
@@ -174,9 +173,12 @@ post '/edit_tags' do
   end
 
   erb "ok"
+=end
+  erb "Дратути =)"
 end
 
 post '/manage' do
+=begin
   @themes_ddl = Theme.where('container = 1')
   @photos = Photo.all
   @theme_name = params[:theme_name]
@@ -212,7 +214,7 @@ post '/manage' do
 
     end
 
-  end
+end
 
   @photo_tmp_id = 0
 
@@ -221,4 +223,6 @@ post '/manage' do
   else
     erb :manage
   end
+=end
+  erb "Дратути =)"
 end

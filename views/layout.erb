@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>Taisiya Bo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
     <script src="/js/jquery.tilesgallery.js" type="text/javascript"></script>
     <script src="https://use.fontawesome.com/886e6e746d.js"></script>
+
     <script type='text/javascript' src='/vendor/unitegallery/js/unitegallery.min.js'></script>
+
     <link rel='stylesheet' href='/vendor/unitegallery/css/unite-gallery.css' type='text/css' />
     <script type='text/javascript' src='/vendor/unitegallery/themes/tiles/ug-theme-tiles.js'></script>
+
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="Stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.2.21/css/lightgallery.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.2.21/css/lg-transitions.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Assistant:200,300,400,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
     <link href="/css/jquery-tilesgallery.css" rel="Stylesheet" />
     <link href="/mystyles.css" rel="stylesheet">
+
     <script>
       var lg_all_photos = [];
     </script>
   </head>
+
   <body>
+
       <div class="page">
+
         <div class="header">
           <div class="header-text">
               <a href="/"><span><h1>Taisiya Bo</h1></span>
@@ -29,12 +38,12 @@
 
           <div class="buttons">
             <div class="btn-12">
-              <div class="btn btn-gt"><a href="/"><i class="fa fa-github-alt" aria-hidden="true"></i></a></div>
-              <div class="btn btn-in"><a href="/"><i class="fa fa-instagram" aria-hidden="true"></i></a></div>
+              <div class="btn btn-gt"><a href="https://github.com/Thaisia" target="blank"><i class="fa fa-github-alt" aria-hidden="true"></i></a></div>
+              <div class="btn btn-in"><a href="https://www.instagram.com/_ta_photo_/" target="blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></div>
             </div>
             <div class="btn-34">
-              <div class="btn btn-vk"><a href="/"><i class="fa fa-vk" aria-hidden="true"></i></a></div>
-              <div class="btn btn-fb"><a href="/"><i class="fa fa-facebook" aria-hidden="true"></i></a></div>
+              <div class="btn btn-vk"><a href="https://vk.com/thaisia_b" target="blank"><i class="fa fa-vk" aria-hidden="true"></i></a></div>
+              <div class="btn btn-fb"><a href="https://www.facebook.com/Thaisia.B" target="blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></div>
             </div>
           </div>
         </div>
@@ -68,8 +77,6 @@
                 <% end %>
               <% end %>
               <li class="sub ajax"><a href="/aboutme">About me</a></li>
-              <li class="sub ajax"><a href="/test">Test</a></li>
-              <li class="sub ajax"><a href="/manage">Manage</a></li>
             </ul>
           </div>
 
@@ -110,12 +117,12 @@
                 moar.html($(res).filter("#moar").html());
                 eval($(res).filter("script").text());
                 $(".tiles").tilesGallery({
-                    height: 2400,
+                    height: 1600,
                     margin: 3,
-                    enableTwitter: true,
-                    enableFacebook: true,
+                    enableTwitter: false,
+                    enableFacebook: false,
                     enableGplus: false,
-                    enablePinterest: true
+                    enablePinterest: false
                 });
 
                 $(".lg").off();
@@ -152,10 +159,10 @@
                 $(".tiles").tilesGallery({
                     height: 1600,
                     margin: 3,
-                    enableTwitter: true,
-                    enableFacebook: true,
+                    enableTwitter: false,
+                    enableFacebook: false,
                     enableGplus: false,
-                    enablePinterest: true
+                    enablePinterest: false
                 });
                 eval($(res).filter("script").text());
                 $(".lg").off();
@@ -194,10 +201,10 @@
               $(".tiles").tilesGallery({
                   height: 1600,
                   margin: 3,
-                  enableTwitter: true,
-                  enableFacebook: true,
+                  enableTwitter: false,
+                  enableFacebook: false,
                   enableGplus: false,
-                  enablePinterest: true
+                  enablePinterest: false
               });
               $(".lg").off();
               $(".lg").click(function() {
@@ -224,4 +231,5 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.2.21/js/lg-thumbnail.js"></script>
 
   </body>
+
 </html>

@@ -65,7 +65,8 @@ h3{ font-size: 24px;
 
 .buttons{   float: right;
             margin-right: 15px;
-            margin-top: 17px; }
+            margin-top: 17px;
+            width: 64px; }
 
 .buttons a{ color: black;
             text-decoration: none;  }
@@ -200,3 +201,16 @@ h3{ font-size: 24px;
 .tags-chbx{ font-size: 18px;
             font-weight: 500;
             display: flex;}
+
+.about-me{  background-image: url(img/bg777.JPG);
+            background-size: cover;
+            padding-top:  1px;
+            height: 1600px;
+            }
+
+.about-me-text{ margin: 50px;
+                font-family: 'Roboto', sans-serif;
+                font-size: 14px;
+                font-weight: 300;
+                color: black;
+}
