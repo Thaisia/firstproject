@@ -43,6 +43,6 @@ class CreateThemes < ActiveRecord::Migration
     Theme.create :theme_link => 'slovenia', :parent_id => 	11, :theme_name => 'Slovenia', :container => 1
     Theme.create :theme_link => 'somanyroads', :parent_id => 	2,  :theme_name => 'So many roads', :container => 1
     Theme.create :theme_link => 'everyday', :parent_id => 	3,  :theme_name => 'Every day', :container => 1
-
+    Theme.create :theme_link => 'sport', :parent_id => 	3,  :theme_name => 'Sport', :container => 1
   end
 end

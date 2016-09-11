@@ -3,8 +3,8 @@
     <div class="tiles<% if @offset != 0 %> next-page<% end %>"><div class="items">
     <% @photos.each_with_index do |photo, index|%>
       <div class="item">
-        <a class="lg" data-index="<%= @offset + index %>" href="/content/<%= photo.photo_link %>">
-          <img class="pic" src="/content/<%= photo.photo_link %>">
+        <a class="lg" data-index="<%= @offset + index %>" href="/content/th/th<%= photo.photo_link %>" >
+          <img class="pic" src="/content/th/th<%= photo.photo_link %>" alt="<%= photo.id %>">
           <div class="caption"></div>
         </a>
       </div>
